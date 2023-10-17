@@ -12,63 +12,63 @@ const LearnPublic = ({ navigation, searchText }) => {
   const coursesRow1 = [
     {
       id: 1,
-      imageSource: require("../assets/computer.png"),
-      text: "Computer Hacking",
+      imageSource: require("../assets/data.png"),
+      text: "Fundamental Of Programming",
     },
-    { id: 2, imageSource: require("../assets/math.png"), text: "Mathematics" },
-    { id: 3, imageSource: require("../assets/python.png"), text: "Python" },
-    { id: 4, imageSource: require("../assets/java.png"), text: "Java" },
+    { id: 2, imageSource: require("../assets/code1.png"), text: "Data Structure" },
+    { id: 3, imageSource: require("../assets/cloud2.png"), text: "Data Analysis" },
+    { id: 4, imageSource: require("../assets/ml.png"), text: "Machine Learning" },
   ];
 
   const coursesRow2 = [
     {
       id: 5,
-      imageSource: require("../assets/cloud.png"),
-      text: "Cloud Computing",
+      imageSource: require("../assets/pyq.png"),
+      text: "WIA2007",
     },
     {
       id: 6,
-      imageSource: require("../assets/quantum1.png"),
-      text: "Quantum Computing I",
+      imageSource: require("../assets/pyq.png"),
+      text: "WIX2002",
     },
     {
       id: 7,
-      imageSource: require("../assets/quantum2.png"),
-      text: "Quantum Computing II",
+      imageSource: require("../assets/pyq.png"),
+      text: "WIA2001",
     },
     {
       id: 8,
-      imageSource: require("../assets/mathcs.png"),
-      text: "Mathematics & Computer Science",
+      imageSource: require("../assets/pyq.png"),
+      text: "WIX2001",
     },
     {
       id: 9,
-      imageSource: require("../assets/computing.png"),
-      text: "Mathematics in Computing",
+      imageSource: require("../assets/pyq.png"),
+      text: "WIA1002",
     },
   ];
 
   const coursesRow3 = [
     {
       id: 10,
-      imageSource: require("../assets/computer.png"),
-      text: "Computer Hacking",
+      imageSource: require("../assets/pyq.png"),
+      text: "WIA2007",
     },
-    { id: 11, imageSource: require("../assets/math.png"), text: "Mathematics" },
+    { id: 11, imageSource: require("../assets/calculus.png"), text: "Calculus" },
     {
       id: 12,
-      imageSource: require("../assets/quantum1.png"),
-      text: "Quantum Computing I",
+      imageSource: require("../assets/code2.png"),
+      text: "Data Structure",
     },
     {
       id: 13,
-      imageSource: require("../assets/quantum2.png"),
-      text: "Quantum Computing II",
+      imageSource: require("../assets/data.png"),
+      text: "Fundamentals of Programming",
     },
     {
       id: 14,
-      imageSource: require("../assets/computing.png"),
-      text: "Mathematics in Computing",
+      imageSource: require("../assets/ml.png"),
+      text: "Machine Learning",
     },
   ];
 
