@@ -3,7 +3,7 @@ import LearnPublic from "./Learn_Public";
 import Learn_UM from "./Learn_UM";
 import { StyleSheet, TouchableOpacity, View, Text, TextInput, ScrollView} from "react-native";
 
-function Learn_Page() {
+function Learn_Page({navigation}) {
   const [selectedTab, setSelectedTab] = useState(1);
   const [searchText, setSearchText] = useState("");
   return (
@@ -50,8 +50,8 @@ function Learn_Page() {
         </TouchableOpacity>
       </View>
       <ScrollView vertical>
-        {selectedTab === 1 && <LearnPublic searchText={searchText} />}
-      {selectedTab === 2 && <Learn_UM searchText={searchText} />}
+        {selectedTab === 1 && <LearnPublic navigation={navigation} searchText={searchText} />}
+      {selectedTab === 2 && <Learn_UM navigation={navigation} searchText={searchText} />}
       </ScrollView>
       
     </View>

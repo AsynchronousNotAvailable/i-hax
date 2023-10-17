@@ -1,5 +1,6 @@
 import React from 'react';
-import { View, Text, FlatList } from 'react-native';
+import { View, Text, FlatList, StyleSheet } from 'react-native';
+import { Card } from "@rneui/base";
 import Icon from 'react-native-vector-icons/FontAwesome';
 
 function CourseReview() {
@@ -25,7 +26,8 @@ function CourseReview() {
   }
 
   return (
-    <FlatList
+    <Card containerStyle={styles.innerCardContainer}>
+      <FlatList
     data={reviewData}
     keyExtractor={(item) => item.id}
     renderItem={({ item }) => (
@@ -44,9 +46,24 @@ function CourseReview() {
           </View>
         </View>
     )}
-  />
+  /></Card>
+    
   );
 
+
+  
+
 }
+const styles = StyleSheet.create({
+  innerCardContainer: {
+    backgroundColor: "white",
+    borderTopLeftRadius: 20,
+    borderTopRightRadius: 20,
+    padding: 16,
+    width: "100%",
+    margin: 0,
+    height: "100%",
+  },
+});
 
 export default CourseReview;
