@@ -8,7 +8,7 @@ const LearnPublic = ({ navigation }) => {
         {/* Container 1 */}
         <View style={{ margin: 10 }}>
           <TouchableOpacity
-            onPress={() => navigation.navigate('OtherScreen')}
+            onPress={() => navigation.navigate('Profile')}
           >
             <Image
               source={require('../assets/graphic.png')}

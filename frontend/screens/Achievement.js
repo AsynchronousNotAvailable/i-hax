@@ -1,0 +1,233 @@
+import React from 'react';
+import { View, Text, ScrollView, Image, StyleSheet } from 'react-native';
+
+const Achievement = () => {
+  return (
+    <ScrollView contentContainerStyle={styles.container}>
+      <Text style={styles.header}>Achievements</Text>
+      <View style={styles.levelContainer}>
+        <View style={styles.levelBox}>
+          <Text style={styles.levelText}>Level 2</Text>
+          <Text style={styles.levelDescription}>480xp more to level up</Text>
+          <View style={styles.progressBarContainer}>
+          <View style={[styles.progressBar, { width: 70 }]}></View>
+        </View>
+        </View>
+      </View>
+      <Text style={styles.title}>Badges</Text>
+      <View style={styles.badgesContainer}>
+        <View style={styles.badgeRow}>
+          <Image
+            source={require('../assets/almost_perfect_badge.png')}
+            style={styles.badgeImage}
+          />
+          <View>
+            <Text style={styles.badgeTitle}>Almost Perfect</Text>
+            <Text style={styles.badgeDescription}>Scored 90% or above on a quiz</Text>
+          </View>
+        </View>
+        <View style={styles.badgeRow}>
+          <Image
+            source={require('../assets/quiz_genius_badge.png')}
+            style={styles.badgeImage}
+          />
+          <View>
+            <Text style={styles.badgeTitle}>Quiz Genius</Text>
+            <Text style={styles.badgeDescription}>Passed 30 Quizzes</Text>
+          </View>
+        </View>
+      </View>
+      <Text style={styles.title}>Medals (5/20)</Text>
+      <ScrollView horizontal contentContainerStyle={styles.medalsContainer}>
+        <View style={styles.medalColumn}>
+          <Image
+            source={require('../assets/medals1.png')}
+            style={styles.medalImage}
+          />
+          <Text style={styles.medalTitle}>Einstein's Apprentice</Text>
+          <Text style={styles.medalLevel}>Level 1</Text>
+        </View>
+        <View style={styles.medalColumn}>
+          <Image
+            source={require('../assets/medals1.png')}
+            style={styles.medalImage}
+          />
+          <Text style={styles.medalTitle}>Book Worm</Text>
+          <Text style={styles.medalLevel}>Level 1</Text>
+        </View>
+        <View style={styles.medalColumn}>
+          <Image
+            source={require('../assets/medals1.png')}
+            style={styles.medalImage}
+          />
+          <Text style={styles.medalTitle}>Coding Wizard</Text>
+          <Text style={styles.medalLevel}>Level 1</Text>
+        </View>
+        <View style={styles.medalColumn}>
+          <Image
+            source={require('../assets/medals2.png')}
+            style={styles.medalImage}
+          />
+          <Text style={styles.medalTitle}>Science Sage</Text>
+          <Text style={styles.medalLevel}>Level 2</Text>
+        </View>
+        <View style={styles.medalColumn}>
+          <Image
+            source={require('../assets/medals2.png')}
+            style={styles.medalImage}
+          />
+          <Text style={styles.medalTitle}>Math Maestro</Text>
+          <Text style={styles.medalLevel}>Level 2</Text>
+        </View>
+        {/* Add more medals as needed */}
+      </ScrollView>
+      <Text style={styles.title}>Certificates</Text>
+      <View style={styles.certificatesContainer}>
+        <View style={styles.certificateRow}>
+          <Image
+            source={require('../assets/Cert_medal.png')}
+            style={styles.certificateImage}
+          />
+          <View>
+            <Text style={styles.certificateTitle}>Programming in Python</Text>
+            <Text style={styles.certificateDescription}>Grade Achieved 98%</Text>
+            <Text style={styles.certificateLink}>View Certificate</Text>
+          </View>
+        </View>
+        <View style={styles.certificateRow}>
+          <Image
+            source={require('../assets/Cert_medal.png')}
+            style={styles.certificateImage}
+          />
+          <View>
+            <Text style={styles.certificateTitle}>English Speaking & Listening</Text>
+            <Text style={styles.certificateDescription}>Grade Achieved 90%</Text>
+            {/* Add functionality to display the certificate image when clicked */}
+            <Text style={styles.certificateLink}>View Certificate</Text>
+          </View>
+        </View>
+        {/* more certificates lolll */}
+      </View>
+    </ScrollView>
+  );
+};
+
+const styles = StyleSheet.create({
+  container: {
+    alignItems: 'center',
+    padding: 20,
+  },
+  header: {
+    fontSize: 24,
+    fontWeight: 'bold',
+  },
+  levelContainer: {
+    backgroundColor: 'white',
+    borderRadius: 10,
+    marginVertical: 10,
+    padding: 15,
+  },
+  levelBox: {
+    alignItems: 'center',
+  },
+  levelText: {
+    fontSize: 20,
+  },
+  levelDescription: {
+    fontSize: 14,
+    color: '#9098A3',
+  },
+  title: {
+    fontSize: 20,
+    fontWeight: 'bold',
+    marginTop: 20,
+  },
+  badgesContainer: {
+    backgroundColor: 'white',
+    borderRadius: 10,
+    marginVertical: 10,
+    padding: 25,
+  },
+  badgeRow: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    marginBottom: 10,
+  },
+  badgeImage: {
+    width: 50,
+    height: 50,
+    borderRadius: 25,
+    marginRight: 10,
+  },
+  badgeTitle: {
+    fontSize: 16,
+  },
+  badgeDescription: {
+    fontSize: 12,
+    color: '#9098A3',
+  },
+  medalsContainer: {
+    flexDirection: 'row',
+    marginVertical: 10,
+  },
+  medalColumn: {
+    backgroundColor: 'white',
+    borderRadius: 10,
+    marginHorizontal: 5,
+    alignItems: 'center',
+    padding: 10,
+  },
+  medalImage: {
+    width: 70,
+    height: 70,
+  },
+  medalTitle: {
+    fontSize: 14,
+  },
+  medalLevel: {
+    fontSize: 12,
+    color: '#7AB4A1',
+  },
+  certificatesContainer: {
+    backgroundColor: 'white',
+    borderRadius: 10,
+    marginVertical: 10,
+    padding: 25,
+  },
+  certificateRow: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    marginBottom: 10,
+  },
+  certificateImage: {
+    width: 50,
+    height: 50,
+    marginRight: 10,
+  },
+  certificateTitle: {
+    fontSize: 16,
+  },
+  certificateDescription: {
+    fontSize: 12,
+    color: '#9098A3',
+  },
+  certificateLink: {
+    color: 'blue',
+    textDecorationLine: 'underline',
+    fontSize: 12,
+  },
+  progressBarContainer: {
+    height: 10,
+    backgroundColor: '#F1F1F1',
+    borderRadius: 5,
+    marginTop: 10,
+  },
+  progressBar: {
+    height: 10,
+    backgroundColor: '#7AB4A1', 
+    borderRadius: 5,
+  },
+});
+
+export default Achievement;
+//yet finish asset

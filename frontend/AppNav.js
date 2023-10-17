@@ -6,6 +6,9 @@ import LearnPublic from "./screens/Learn_Public";
 import LearnPublicCourse from "./screens/Learn_Public_Course";
 import LandingPage from "./screens/Landing_Page";
 import LoginPage from "./screens/Login_Page";
+import Profile from "./screens/Profile_Main";
+import Achievement from "./screens/Achievement";
+import Shop from "./screens/Shop";
 
 const Tab = createBottomTabNavigator();
 const Stack = createStackNavigator();
@@ -59,6 +62,9 @@ export default function AppNav() {
       <Stack.Navigator>
         <Stack.Screen name="FifthTabMain" component={LearnPublic} />
         <Stack.Screen name="OtherScreen" component={LearnPublicCourse} />
+        <Stack.Screen name="Profile" component={Profile} />
+          <Stack.Screen name="Achievement" component={Achievement} />
+          <Stack.Screen name="Shop" component={Shop} />
         {/* Add more screens as needed within the FirstTab */}
       </Stack.Navigator>
     );
