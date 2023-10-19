@@ -15,7 +15,7 @@ const Profile = ({ navigation } ) => {
       <View style={styles.whiteBackground}>
         <View style={styles.buttonRows}>
           <View style={styles.buttonRow}>
-            <TouchableOpacity style={styles.button}>
+            <TouchableOpacity style={styles.button} onPress={() => navigation.navigate('Language')}>
               <Text>Language Preferences</Text>
             </TouchableOpacity>
           </View>
@@ -50,12 +50,12 @@ const Profile = ({ navigation } ) => {
         <View style={styles.buttonRows}>
         <Text style={styles.title}>Support</Text>
         <View style={styles.buttonRow}>
-        <TouchableOpacity style={styles.button}>
+        <TouchableOpacity style={styles.button} onPress={() => navigation.navigate('Help Centre')}>
           <Text>Help Centre</Text>
         </TouchableOpacity>
         </View>
         <View style={styles.buttonRow}>
-        <TouchableOpacity style={styles.button}>
+        <TouchableOpacity style={styles.button} onPress={() => navigation.navigate('Report A Bug')}>
           <Text>Report a Bug</Text>
         </TouchableOpacity>
         </View>
@@ -81,8 +81,8 @@ const styles = StyleSheet.create({
     marginTop: 20,
   },
   profileImage: {
-    width: 100,
-    height: 100,
+    width: 80,
+    height: 80,
     borderRadius: 50,
   },
   profileName: {
@@ -110,7 +110,7 @@ const styles = StyleSheet.create({
     borderRadius: 10,
     padding: 10,
     margin: 5,
-    alignItems: 'center',
+    alignItems: 'left',
   },
   title: {
     fontSize: 18,

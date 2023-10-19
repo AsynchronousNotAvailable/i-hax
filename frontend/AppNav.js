@@ -9,6 +9,10 @@ import LoginPage from "./screens/Login_Page";
 import Profile from "./screens/Profile_Main";
 import Achievement from "./screens/Achievement";
 import Shop from "./screens/Shop";
+import Language from "./screens/Language";
+import FAQScreen from "./screens/FAQ";
+import ContactUsScreen from "./screens/Contact_Us";
+import ReportIssue from "./screens/Report";
 
 const Tab = createBottomTabNavigator();
 const Stack = createStackNavigator();
@@ -61,8 +65,12 @@ export default function AppNav() {
     return (
       <Stack.Navigator>
         <Stack.Screen name="Profile" component={Profile} options={{ headerShown: false }} />
+          <Stack.Screen name="Language" component={Language} />
           <Stack.Screen name="Achievement" component={Achievement} />
           <Stack.Screen name="Shop" component={Shop} />
+          <Stack.Screen name="Help Centre" component={FAQScreen} />
+          <Stack.Screen name="Contact Us" component={ContactUsScreen} />
+          <Stack.Screen name="Report A Bug" component={ReportIssue} />
         {/* Add more screens as needed within the FirstTab */}
       </Stack.Navigator>
     );
