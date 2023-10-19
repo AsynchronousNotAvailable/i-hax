@@ -60,9 +60,7 @@ export default function AppNav() {
   function FifthTabStack() {
     return (
       <Stack.Navigator>
-        <Stack.Screen name="FifthTabMain" component={LearnPublic} />
-        <Stack.Screen name="OtherScreen" component={LearnPublicCourse} />
-        <Stack.Screen name="Profile" component={Profile} />
+        <Stack.Screen name="Profile" component={Profile} options={{ headerShown: false }} />
           <Stack.Screen name="Achievement" component={Achievement} />
           <Stack.Screen name="Shop" component={Shop} />
         {/* Add more screens as needed within the FirstTab */}

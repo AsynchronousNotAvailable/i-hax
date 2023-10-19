@@ -1,7 +1,7 @@
 import React from 'react';
 import { View, ScrollView, Text, Image, TouchableOpacity, StyleSheet } from 'react-native';
 
-const Profile = ({ navigation }) => {
+const Profile = ({ navigation } ) => {
   return (
     <ScrollView style={styles.container}>
       <View style={styles.profileContainer}>
@@ -33,25 +33,39 @@ const Profile = ({ navigation }) => {
           </View>
         </View>
 
+        <View style={styles.buttonRows}>
         <Text style={styles.title}>Settings and Preferences</Text>
+        <View style={styles.buttonRow}>
         <TouchableOpacity style={styles.button}>
           <Text>Notifications</Text>
         </TouchableOpacity>
+        </View>
+        <View style={styles.buttonRow}>
         <TouchableOpacity style={styles.button}>
           <Text>Security</Text>
         </TouchableOpacity>
+        </View>
+        </View>
 
+        <View style={styles.buttonRows}>
         <Text style={styles.title}>Support</Text>
+        <View style={styles.buttonRow}>
         <TouchableOpacity style={styles.button}>
           <Text>Help Centre</Text>
         </TouchableOpacity>
+        </View>
+        <View style={styles.buttonRow}>
         <TouchableOpacity style={styles.button}>
           <Text>Report a Bug</Text>
         </TouchableOpacity>
+        </View>
+        </View>
 
+        <View style={styles.buttonRows}>
         <TouchableOpacity style={styles.logoutButton}>
           <Text style={styles.logoutButtonText}>Log Out</Text>
         </TouchableOpacity>
+      </View>
       </View>
     </ScrollView>
   );
@@ -107,7 +121,7 @@ const styles = StyleSheet.create({
     borderRadius: 10,
     padding: 10,
     alignItems: 'center',
-    marginTop: 20,
+    marginTop: 5,
   },
   logoutButtonText: {
     color: '#EEECF6',

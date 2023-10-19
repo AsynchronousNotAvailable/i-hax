@@ -1,7 +1,13 @@
-import React from 'react';
-import { View, Text, ScrollView, Image, StyleSheet } from 'react-native';
+import React, {useState} from 'react';
+import { View, Text, ScrollView, Image, Modal, StyleSheet, TouchableOpacity } from 'react-native';
 
 const Achievement = () => {
+  const [certificateModalVisible, setCertificateModalVisible] = useState(false);
+
+  const toggleCertificateModal = () => {
+    setCertificateModalVisible(!certificateModalVisible);
+  };
+
   return (
     <ScrollView contentContainerStyle={styles.container}>
       <Text style={styles.header}>Achievements</Text>
@@ -38,7 +44,7 @@ const Achievement = () => {
         </View>
       </View>
       <Text style={styles.title}>Medals (5/20)</Text>
-      <ScrollView horizontal contentContainerStyle={styles.medalsContainer}>
+      <ScrollView horizontal contentContainerStyle={styles.medalsContainer} showsHorizontalScrollIndicator={false}>
         <View style={styles.medalColumn}>
           <Image
             source={require('../assets/medals1.png')}
@@ -91,7 +97,24 @@ const Achievement = () => {
           <View>
             <Text style={styles.certificateTitle}>Programming in Python</Text>
             <Text style={styles.certificateDescription}>Grade Achieved 98%</Text>
-            <Text style={styles.certificateLink}>View Certificate</Text>
+            <Text style={styles.certificateLink}onPress={toggleCertificateModal}>View Certificate</Text>
+            <Modal
+        animationType="slide"
+        transparent={true}
+        visible={certificateModalVisible}
+        onRequestClose={toggleCertificateModal}
+      >
+        <View style={styles.modalContainer}>
+          <Image
+            source={require('../assets/certificate.jpg')} // Replace with your certificate image
+            style={styles.certificateImageModal}
+          />
+          <TouchableOpacity style={styles.closeButton} onPress={toggleCertificateModal}>
+            <Text style={styles.closeButtonText}>Close</Text>
+          </TouchableOpacity>
+        </View>
+      </Modal>
+
           </View>
         </View>
         <View style={styles.certificateRow}>
@@ -103,7 +126,23 @@ const Achievement = () => {
             <Text style={styles.certificateTitle}>English Speaking & Listening</Text>
             <Text style={styles.certificateDescription}>Grade Achieved 90%</Text>
             {/* Add functionality to display the certificate image when clicked */}
-            <Text style={styles.certificateLink}>View Certificate</Text>
+            <Text style={styles.certificateLink } onPress={toggleCertificateModal}>View Certificate</Text>
+            <Modal
+        animationType="slide"
+        transparent={true}
+        visible={certificateModalVisible}
+        onRequestClose={toggleCertificateModal}
+      >
+        <View style={styles.modalContainer}>
+          <Image
+            source={require('../assets/certificate.jpg')} // Replace with your certificate image
+            style={styles.certificateImageModal}
+          />
+          <TouchableOpacity style={styles.closeButton} onPress={toggleCertificateModal}>
+            <Text style={styles.closeButtonText}>Close</Text>
+          </TouchableOpacity>
+        </View>
+      </Modal>
           </View>
         </View>
         {/* more certificates lolll */}
@@ -226,6 +265,31 @@ const styles = StyleSheet.create({
     height: 10,
     backgroundColor: '#7AB4A1', 
     borderRadius: 5,
+  },
+  certificateLink: {
+    color: 'blue',
+    textDecorationLine: 'underline',
+    fontSize: 12,
+  },
+  modalContainer: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+    backgroundColor: 'rgba(0, 0, 0, 0.4)',
+  },
+  certificateImageModal: {
+    width: 330,
+    height: 260,
+  },
+  closeButton: {
+    backgroundColor: 'white',
+    borderRadius: 10,
+    padding: 10,
+    marginTop: 10,
+  },
+  closeButtonText: {
+    fontSize: 16,
+    color: 'black',
   },
 });
 
