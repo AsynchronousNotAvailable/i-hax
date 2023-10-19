@@ -1,6 +1,6 @@
 import React from 'react';
 import { View, Text, FlatList, StyleSheet } from 'react-native';
-import { Card } from "@rneui/base";
+import { Card } from '@rneui/base';
 import Icon from 'react-native-vector-icons/FontAwesome';
 
 function CourseReview() {
@@ -22,47 +22,47 @@ function CourseReview() {
         />
       );
     }
-    return stars;
+    return (
+      <View style={{ flexDirection: 'row', alignItems: 'center', marginVertical: 5 }}>
+        {stars}
+      </View>
+    );
   }
 
   return (
-    <Card containerStyle={styles.innerCardContainer}>
+    
+    <View style={{ marginLeft: 20 }}>
       <FlatList
-    data={reviewData}
-    keyExtractor={(item) => item.id}
-    renderItem={({ item }) => (
-      <View
-          style={{
-            flexDirection: 'row',
-            alignItems: 'center',
-            marginVertical: 10,
-          }}>
-          <Icon name="user" size={24} color="#000" style={{ marginRight: 10 }} />
-          <View style={{ flexDirection: 'row', alignItems: 'center' }}>
-            {renderStars(item.rating)}
-            <Text style={{ marginLeft: 10 }}>
-              {item.user}: {item.review}
-            </Text>
+        data={reviewData}
+        keyExtractor={(item) => item.id}
+        renderItem={({ item }) => (
+          <View style={{ flexDirection: 'row', alignItems: 'center', marginVertical: 10 }}>
+            <Icon name="user" size={24} color="#000" style={{ marginRight: 10 }} />
+            <View style={{ flexDirection: 'column', alignItems: 'flex-start' }}>
+              {renderStars(item.rating)}
+              <Text style={{ marginLeft: 10 }}>
+                {item.user}: {item.review}
+              </Text>
+            </View>
           </View>
-        </View>
-    )}
-  /></Card>
+        )}
+      />
+
+      </View>
+     
     
   );
-
-
-  
-
 }
+
 const styles = StyleSheet.create({
   innerCardContainer: {
-    backgroundColor: "white",
+    backgroundColor: 'white',
     borderTopLeftRadius: 20,
     borderTopRightRadius: 20,
     padding: 16,
-    width: "100%",
-    margin: 0,
-    height: "100%",
+    width: '100%',
+    margin: 10, // Increase the margin to move the card to the right
+    height: '100%',
   },
 });
 

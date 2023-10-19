@@ -1,50 +1,128 @@
-import React from "react";
-import { View, Text, StyleSheet, Image } from "react-native";
-import { Video } from "expo-av";
+import React, { useEffect, useState } from "react";
+import { View, Text, StyleSheet, ScrollView, TouchableOpacity, Image } from "react-native";
+import * as Animatable from 'react-native-animatable';
 
+function CourseVideo({ navigation }) {
+  const [downloaded, setDownloaded] = useState(false);
+  const animateDownload = () => {
+    setDownloaded(true);
+    setTimeout(() => {
+      setDownloaded(false); // Reset the animation after a short delay (optional)
+    }, 1000); // Adjust the delay as needed
+  };
 
-function CourseVideo() {
-  const video = React.useRef(null);
-  const [status, setStatus] = React.useState({});
+  
   return (
-    // <View style={{ flex: 1 }}>
-    //   {/* Upper Part: Video */}
-    //   <View >
-      
+    <ScrollView vertical>
+      <View style={styles.playList}>
+        <View style={styles.rowContainer}>
+          <TouchableOpacity style={styles.playButton} onPress={() => navigation.navigate("Course Video Page")}>
+            <Image source={require("../../assets/play.png")} />
+          </TouchableOpacity>
+          <View style={styles.progressBar}>
+          <View style={[styles.progressFill, {width: "100%"}]} />
+          </View>
+          <Text style={styles.progressText}>100%</Text>
+          <TouchableOpacity style={styles.playButton} onPress={animateDownload}>
+           
+            <Animatable.View
+            animation={downloaded ? 'rubberBand' : null}
+          >
+            <Image source={require("../../assets/download.png")} />
+          </Animatable.View>
+          </TouchableOpacity>
+        </View>
 
-    // </View>
-    //   {/* Lower Part: Vertical Progress Bar */}
-    //   <View style={{ flex: 0.3, backgroundColor: "lightgray" }}>
-    //     <View style={{ flex: 1, justifyContent: "space-between", padding: 10 }}>
-    //       {/* Checkpoint 1 */}
-    //       <View style={{ flexDirection: "row", alignItems: "center" }}>
-    //         <Text style={{ marginRight: 10 }}>00:00</Text>
-    //         <View style={{ height: 10, width: 10, backgroundColor: "red" }} />
-    //       </View>
+        <View style={styles.rowContainer}>
+          <TouchableOpacity style={styles.playButton} >
+            <Image source={require("../../assets/play.png")} />
+          </TouchableOpacity>
+          <View style={styles.progressBar}>
+            <View style={[styles.progressFill, {width: "75%"}]} />
+          </View>
+          <Text style={styles.progressText}>75%</Text>
+          <TouchableOpacity style={styles.playButton}>
+            <Image source={require("../../assets/download.png")} />
+          </TouchableOpacity>
+        </View>
 
-    //       {/* Checkpoint 2 */}
-    //       <View style={{ flexDirection: "row", alignItems: "center" }}>
-    //         <Text style={{ marginRight: 10 }}>02:30</Text>
-    //         <View style={{ height: 10, width: 10, backgroundColor: "red" }} />
-    //       </View>
+        <View style={styles.rowContainer}>
+          <TouchableOpacity style={styles.playButton}>
+            <Image source={require("../../assets/play.png")} />
+          </TouchableOpacity>
+          <View style={styles.progressBar}>
+          <View style={[styles.progressFill, {width: "25%"}]} />
+          </View>
+          <Text style={styles.progressText}>25%</Text>
+          <TouchableOpacity style={styles.playButton}>
+            <Image source={require("../../assets/download.png")} />
+          </TouchableOpacity>
+        </View>
 
-    //       {/* Add more checkpoints as needed */}
-    //     </View>
-    //   </View>
-    // </View>
+        <View style={styles.rowContainer}>
+          <TouchableOpacity style={styles.playButton}>
+            <Image source={require("../../assets/play.png")} />
+          </TouchableOpacity>
+          <View style={styles.progressBar}>
+          <View style={[styles.progressFill, {width: "50%"}]} />
+          </View>
+          <Text style={styles.progressText}>50%</Text>
+          <TouchableOpacity style={styles.playButton}>
+            <Image source={require("../../assets/download.png")} />
+          </TouchableOpacity>
+        </View>
 
-    <Video
-  source={require("../../assets/video.mp4")}
-  style={{ flex: 1 }}
-  resizeMode="contain"
-  useNativeControls
-  onPlaybackStatusUpdate={(status) => setStatus(() => status)}
-/>
+        <View style={styles.rowContainer}>
+          <TouchableOpacity style={styles.playButton}>
+            <Image source={require("../../assets/play.png")} />
+          </TouchableOpacity>
+          <View style={styles.progressBar}>
+          <View style={[styles.progressFill, {width: "40%"}]} />
+          </View>
+          <Text style={styles.progressText}>40%</Text>
+          <TouchableOpacity style={styles.playButton}>
+            <Image source={require("../../assets/download.png")} />
+          </TouchableOpacity>
+        </View>
+      </View>
+    </ScrollView>
   );
 }
 
-export default CourseVideo;
-
 const styles = StyleSheet.create({
+  playList: {
+    flexDirection: "column",
+    alignItems: "center",
+    marginLeft: 20,
+    marginRight: 20,
+  },
+  rowContainer: {
+    flexDirection: "row",
+    justifyContent: "space-between",
+    alignItems: "center",
+    marginTop: 13,
+    marginBottom: 13,
+  },
+  playButton: {
+    marginRight: 10,
+  },
+  progressBar: {
+    flex: 1,
+    height: 10,
+    backgroundColor: "#ccc",
+    borderRadius: 5,
+  },
+  progressFill: {
+    height: "100%",
+    width: "50%", // Change this value to set the progress
+    backgroundColor: "blue",
+    borderRadius: 5,
+  },
+  progressText: {
+    marginLeft: 10,
+    marginRight: 10,
+    fontSize: 16,
+  },
+});
 
-})
+export default CourseVideo;

@@ -139,7 +139,7 @@ const LearnPublic = ({ navigation, searchText }) => {
 const CourseColumn = ({ navigation, imageSource, text }) => {
   return (
     <View style={styles.columnContainer}>
-      <TouchableOpacity onPress={() => navigation.navigate("CourseDetails")}>
+      <TouchableOpacity onPress={() => navigation.navigate("Computer Hacking")}>
         <Image source={imageSource} style={styles.courseImage} />
         <View style={styles.transparentLayer}>
           <Text style={styles.courseText}>{text}</Text>

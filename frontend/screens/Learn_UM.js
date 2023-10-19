@@ -10,12 +10,12 @@ import {
 
 const LearnPublic = ({ navigation, searchText }) => {
   const coursesRow1 = [
+    { id: 1, imageSource: require("../assets/code1.png"), text: "Data Structure" },
     {
-      id: 1,
+      id: 2,
       imageSource: require("../assets/data.png"),
       text: "Fundamental Of Programming",
     },
-    { id: 2, imageSource: require("../assets/code1.png"), text: "Data Structure" },
     { id: 3, imageSource: require("../assets/cloud2.png"), text: "Data Analysis" },
     { id: 4, imageSource: require("../assets/ml.png"), text: "Machine Learning" },
   ];
@@ -139,7 +139,7 @@ const LearnPublic = ({ navigation, searchText }) => {
 const CourseColumn = ({ navigation, imageSource, text }) => {
   return (
     <View style={styles.columnContainer}>
-      <TouchableOpacity onPress={() => navigation.navigate("CourseDetails")}>
+      <TouchableOpacity onPress={() => navigation.navigate("Fundamentals Of Programming")}>
         <Image source={imageSource} style={styles.courseImage} />
         <View style={styles.transparentLayer}>
           <Text style={styles.courseText}>{text}</Text>
