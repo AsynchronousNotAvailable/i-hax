@@ -1,14 +1,22 @@
 import React, { useState } from 'react';
 import { View, Text, TouchableOpacity, TextInput, Switch, StyleSheet, KeyboardAvoidingView, Platform } from 'react-native';
 import Icon from 'react-native-vector-icons/FontAwesome';
-import { useNavigation } from '@react-navigation/native';
 
-const CommunityPost = () => {
+const CommunityPost = ({ navigation, route }) => {
   const [isAnonymous, setIsAnonymous] = useState(false);
   const [postText,setPostText] = useState('');
-  const navigation = useNavigation();
   const handlePost = () => {
-    navigation.navigate('Community', { screen: 'FourthTabMain' });
+    const { setPosts } = route.params; 
+
+    const newPost = {
+      id: Date.now().toString(),
+      username: 'You', 
+      userAvatar: 'null',
+      content: postText, 
+    };
+
+    setPosts((prevPosts) => [...prevPosts, newPost]);
+    navigation.goBack();
   };
   return (
     <KeyboardAvoidingView

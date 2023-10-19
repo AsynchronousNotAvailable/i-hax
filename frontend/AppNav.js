@@ -9,7 +9,6 @@ import LoginPage from "./screens/Login_Page";
 import Community from "./screens/Community_Main";
 import CommunityMessage from "./screens/Community_Message";
 import CommunityTutor from "./screens/Community_Tutor";
-import CommunityTutorSearch from "./screens/Community_TutorSearch";
 import CommunityBookTutor from "./screens/Community_BookTutor";
 import CommunityChat from "./screens/Community_Chat";
 import CommunityChatscreen from "./screens/Community_Chatscreen";
@@ -72,7 +71,6 @@ export default function AppNav() {
     return (
       <Stack.Navigator>
         <Stack.Screen name="FourthTabMain" component={Community} options={({ navigation }) => ({ headerTitle: (props) => <CustomHeader {...props}  navigation={navigation}/>,  headerTitleAlign: 'center'})}/>
-        <Stack.Screen name="CommunityTutorSearch" component={CommunityTutorSearch} options={{title: 'Search Tutor', headerTitleAlign: 'center',}} />
         <Stack.Screen name="CommunityTutor" component={CommunityTutor} options={{title: 'Search Tutor', headerTitleAlign: 'center'}} />
         <Stack.Screen name="CommunityBookTutor" component={CommunityBookTutor} options={{title: 'Book a Session', headerTitleAlign: 'center'}} />
         <Stack.Screen name="CommunityMessage" component={CommunityMessage}  options={({ route }) => ({title: route.params.tutorName, headerTitleAlign: 'center',})}/>

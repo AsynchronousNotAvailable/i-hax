@@ -10,10 +10,10 @@ const tutorsData = {
   };
 
   const timeSlots = [
-    '23 October 2023, Monday 7:00PM - 8:00PM',
-    '23 October 2023, Monday 9:00PM - 10:00PM',
-    '24 October 2023, Tuesday 8:00PM - 9:00PM',
-    '24 October 2023, Thursday 1:00PM - 3:00PM',
+    'Mon 23 Oct 7:00PM to 8:00PM',
+    'Mon 23 Oct 9:00PM to 10:00PM',
+    'Tue 24 Oct 8:00PM to 9:00PM',
+    'Thu 24 Oct 1:00PM to 3:00PM',
   ];
 
 const CommunityBookTutor = ({ route }) => {
@@ -25,7 +25,15 @@ const CommunityBookTutor = ({ route }) => {
   };
   const navigation = useNavigation();
   const handleSubmit = () => {
-    navigation.navigate('Community', { screen: 'FourthTabMain' });
+    navigation.navigate('Community', { 
+      screen: 'FourthTabMain',
+      params: {
+        selectedInfo: {
+          tutor: tutor,
+          selectedTimeSlot: selectedTimeSlot,
+        },
+      },
+    });
   };
 
   return (

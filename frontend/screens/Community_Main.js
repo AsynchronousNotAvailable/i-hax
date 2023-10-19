@@ -1,7 +1,8 @@
-import React from 'react';
+import React, { useState }  from 'react';
 import { ScrollView, View, TouchableOpacity, Text, Image, StyleSheet,ImageBackground,FlatList } from 'react-native';
 import Icon from 'react-native-vector-icons/FontAwesome5';
 import placeholderImage from '../assets/avatar.png';
+import { useRoute } from '@react-navigation/native';
 
 const ForumPost = ({ post }) => {
   const maxContentLength = 160;
@@ -19,7 +20,7 @@ const ForumPost = ({ post }) => {
             <Icon name="ellipsis-h" size={20} color="gray" style={{transform: [{ rotate: '90deg' }], marginTop: 5,marginLeft: 20 }}/>
           </TouchableOpacity>
         </View>
-        <Text style={styles.postTitle}>{post.title}</Text>
+        <Text style={styles.postTitle}>{post.title || ''}</Text>
         <Text style={styles.postText}>
           {post.content.length > maxContentLength
             ? post.content.slice(0, maxContentLength) + ' ... '
@@ -49,25 +50,25 @@ const ForumPost = ({ post }) => {
   );
 };
 
-const UpcomingSessions = ({ data }) => {
+const UpcomingSessions = ({ data  }) => {
   return (
     <View style={styles.upcomingSessionsContainer}>
       <Text style={styles.upcomingSessionsText}>Upcoming Sessions</Text>
       <FlatList
         horizontal
         data={data}
-        keyExtractor={(item) => item.id.toString()}
+        keyExtractor={(item) => (item.id ? item.id.toString() : Math.random().toString())}
         showsHorizontalScrollIndicator={false}
         renderItem={({ item }) => (
           <View style={styles.upcomingSessionCard}>
-            <Text style={styles.subject}>{item.subject}</Text>
+            <Text style={styles.subject}>{item.tutor.course}</Text>
             <View style={styles.dateContainer}>
               <Icon name="calendar" size={20} color="black" />
-              <Text style={styles.date}>{item.date}</Text>
+              <Text style={styles.date}>{item.selectedTimeSlot}</Text>
             </View>
             <View style={styles.tutorContainer}>
             <Image source={placeholderImage} style={styles.avatar} />
-            <Text style={styles.tutorname}>{item.username}</Text>
+            <Text style={styles.tutorname}>{item.tutor.name}</Text>
             <View style={styles.startSessionContainer}>
             <TouchableOpacity style={styles.startSessionButton} >
               <Text style={styles.startSessionText}>Start Session</Text>
@@ -87,53 +88,52 @@ const usersAvatar = {
 };
 
 const Community = ({ navigation }) => {
-  const posts = [
+  const [posts, setPosts] = useState([
     {
       id: 1,
       username: 'Catherine',
       userAvatar: 'user1',
-      title: 'Learn Coding for FREE!',
-      content: 'Here’s a list of websites to help you get started with coding:\n\n1. GeeksforGeeks.org\n2. SoloLearn.com\n3. W3Schools.com\n4. FreeCodeCamp.org\n5. Codecademy.com  ',
+      content: 'Learn Coding for FREE!\n\nHere’s a list of websites to help you get started with coding:\n\n1. GeeksforGeeks.org\n2. SoloLearn.com\n3. W3Schools.com\n4. FreeCodeCamp.org\n5. Codecademy.com  ',
     },
     {
       id: 2,
       username: 'Sam',
       userAvatar: 'user2',
-      title: 'Resume tips for you to score a job:',
-      content: '1. Lead with a strong education section if you are writing a resume without work experience \n2. Quantify you results using numbers, percentages, and metrics whenever possible.\n3. Always update your resume regularly without waiting for the end of the year or the start of a job searc',
+      content: 'Resume tips for you to score a job:\n\n1. Lead with a strong education section if you are writing a resume without work experience \n2. Quantify you results using numbers, percentages, and metrics whenever possible.\n3. Always update your resume regularly without waiting for the end of the year or the start of a job searc',
     },
     {
       id: 3,
       username: 'Anonymous User',
       userAvatar: null,
-      title: 'I am stressed :(',
-      content: 'I just cannot sit and study. I get extremely anxious when I try to study, and now I have started hating my studies. My grades keep dropping. What should I do?',
+      content: 'I am stressed :(\n\nI just cannot sit and study. I get extremely anxious when I try to study, and now I have started hating my studies. My grades keep dropping. What should I do?',
     },
     {
       id: 4,
       username: 'Anonymous User',
       userAvatar: null,
-      title: 'Physics question',
-      content: 'An airplane flies 200 km due west from city A to city B and then 280 km in the direction of 27.0° north of west from city B to city C.\n(a) In straight-line distance, how far is city C from city A? km ',
+      content: 'Physics question\n\nAn airplane flies 200 km due west from city A to city B and then 280 km in the direction of 27.0° north of west from city B to city C.\n(a) In straight-line distance, how far is city C from city A? km ',
     }
-  ];
+  ]);
+
+  const route = useRoute();
+  const selectedInfo = route.params ? route.params.selectedInfo : null;
 
   const upcomingSessions = [
     {
-      id: 1,
-      subject:'Physics',
-      date:'Tue 10 Oct 11:00 AM to 12:00 PM',
-      username: 'Mary',
+      id: 7,
+      selectedTimeSlot:'Tue 10 Oct 11:00 AM to 12:00 PM',
+      tutor: { name: 'Tutor Mary',course:'Physics', },
       avatar: 'null', 
     },
     {
-      id: 2,
-      subject:'Chinese',
-      date:'Sun 15 Mon 9:00 PM to 11:00 PM',
-      username: 'James',
+      id: 8,
+      selectedTimeSlot:'Sun 15 Mon 9:00 PM to 11:00 PM',
+      tutor: { name: 'Tutor Tom', course:'Chinese', },
       avatar: 'null', 
     },
   ];
+
+  const allUpcomingSessions = selectedInfo ? [selectedInfo, ...upcomingSessions] : upcomingSessions;
 
   return (
     <View>
@@ -162,8 +162,8 @@ const Community = ({ navigation }) => {
             </TouchableOpacity>
           </View>
         </ScrollView>
-        <UpcomingSessions data={upcomingSessions} />
-        <TouchableOpacity onPress={() => navigation.navigate('CommunityTutorSearch')}>
+        <UpcomingSessions data={allUpcomingSessions} />
+        <TouchableOpacity onPress={() => navigation.navigate('CommunityTutor')}>
         <ImageBackground source={require('../assets/booktutor.png')} style={styles.imageBackground}>
           <View style={styles.overlay}>
             <Text style={styles.text}>Ask or book a session with a tutor</Text>
@@ -178,7 +178,7 @@ const Community = ({ navigation }) => {
          <TouchableOpacity
           style={styles.floatingButton}
           onPress={() => {
-            navigation.navigate('CommunityPost');
+            navigation.navigate('CommunityPost', { setPosts });
           }}
         >
           <Icon name="plus" size={18} color="white" />
@@ -225,17 +225,10 @@ const styles = StyleSheet.create({
     flex: 1,
     paddingLeft: 5,
   },
-  postTitle: {
-    paddingTop: 8,
-    paddingLeft: 3,
-    fontSize: 16,
-    fontWeight: 'bold',
-  },
   postText: {
-    paddingTop: 8,
     paddingLeft: 3,
     paddingRight: 10,
-    fontSize: 14,
+    fontSize: 15,
   },
   buttonsContainer: {
     flexDirection: 'row',
@@ -286,7 +279,7 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
   },
   upcomingSessionCard: {
-    width: 270, 
+    width: 280, 
     backgroundColor: '#F2EFFF', 
     margin: 10,
     borderRadius: 10,
@@ -298,7 +291,8 @@ const styles = StyleSheet.create({
     marginTop: 8,
   },
   tutorname:{
-    marginRight:30,
+    marginLeft:5,
+    marginRight:20,
     marginTop: 4,
   },
   startSessionContainer: {
