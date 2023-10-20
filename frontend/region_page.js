@@ -1,14 +1,26 @@
-import React from 'react';
+import React, {useState} from 'react';
 import { View, Text, TouchableOpacity, StyleSheet, SafeAreaView,
-    Image, } from 'react-native';
+    Image, ScrollView} from 'react-native';
 import SignUpPage from './screens/sign_up_page';
 import LoginPage from './screens/loginPage';
 import FeatherIcon from 'react-native-vector-icons/Feather';
+// import CountryPicker from 'react-native-country-picker-modal'
 
 
 const RegionPage = ({ navigation }) => {
   const navigateToNextPage = () => {
-    navigation.navigate('RegionPage'); // Navigate to the next page
+    navigation.navigate('SelectLanguagePage'); // Navigate to the next page
+  };
+  const [selectedButton, setSelectedButton] = useState(null);
+  const buttons = [];
+  const handleButtonPress = (index) => {
+    if (index === selectedButton) {
+      // If the button is already selected, deselect it
+      setSelectedButton(null);
+    } else {
+      // Otherwise, select the button
+      setSelectedButton(index);
+    }
   };
 
   return (
@@ -21,7 +33,7 @@ const RegionPage = ({ navigation }) => {
       <Text style={styles.Headertext}>
         Select Your Region
       </Text>
-      <Text style={styles.Headertext}>
+      <Text style={styles.text}>
         We will share with you the learning resources {'\n'}
         based on your location
       </Text>
@@ -31,9 +43,19 @@ const RegionPage = ({ navigation }) => {
           <Text>
             hello
             waw
+            {"\n"}
+            <TouchableOpacity
+              onPress={(navigation) => navigateToNextPage(navigation)}>
+              <View style={styles.button}>
+                <Text style={[styles.buttonText]}>Year 1</Text>
+              </View>
+            </TouchableOpacity>
           </Text>
         </View>
       </ScrollView>
+      <TouchableOpacity onPress={() => navigation.navigate('SelectLanguagePage')} style={styles.progress}>
+        <Image source={require('../frontend/assets/progress2.png')}></Image>
+      </TouchableOpacity>
     </View>
     </SafeAreaView>
   );
@@ -41,7 +63,7 @@ const RegionPage = ({ navigation }) => {
 
 const styles = StyleSheet.create({
     container: {
-      flex: 1,
+      // flex: 1,
       justifyContent: 'center', // Center content vertically
       alignItems: 'stretch',
     },
@@ -86,6 +108,7 @@ const styles = StyleSheet.create({
       fontWeight: '400',
       color: '#000000',
       textAlign: 'center',
+      marginBottom: 20,
     },
     Headertext: {
       ontSize: 30,
@@ -141,12 +164,20 @@ const styles = StyleSheet.create({
       borderColor: '#6562F5',
     },
     Flagcontainer: {
-      flex: 1,
+      //flex: 1,
       backgroundColor: 'white',
+      height: 450,
+      width: 350,
+      left: 20,
+      borderRadius: 8,
     },
     scrollContainer: {
       flexGrow: 1, // Allow the ScrollView to take up the entire space
     },
+    progress: {
+      top: 40,
+      left: 278,
+    }
   });
 
 export default RegionPage;

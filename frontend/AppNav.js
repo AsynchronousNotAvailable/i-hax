@@ -15,6 +15,12 @@ import PrimaryGradePage from "./primary_grade_page";
 import SecondaryGradePage from "./secondary_grade_page";
 import TertiaryGradePage from "./tertiary_grade_page";
 import RegionPage from "./region_page";
+import SelectLanguagePage from "./select_language_page";
+import InterestPage from "./interestPage";
+import EnrollCoursePage from "./enroll_course_page";
+import HomePage from "./HomePage";
+import CheckListPage from "./checklistPage";
+import LearnAnalyticPage from "./learn_analytic_page";
 
 
 const Tab = createBottomTabNavigator();
@@ -26,8 +32,9 @@ export default function AppNav() {
   function FirstTabStack() {
     return (
       <Stack.Navigator>
-        <Stack.Screen name="FirstTabMain" component={LearnPublic} />
-        <Stack.Screen name="OtherScreen" component={LearnPublicCourse} />
+        <Stack.Screen name="FirstTabMain" component={HomePage} options={{headerShown: false}}/>
+        <Stack.Screen name="CheckListScreen" component={CheckListPage} options={{headerShown: false}}/>
+        <Stack.Screen name="LearningAnalyticScreen" component={LearnAnalyticPage} options={{headerShown: false}}/>
         {/* Add more screens as needed within the FirstTab */}
       </Stack.Navigator>
     );
@@ -78,7 +85,7 @@ export default function AppNav() {
     <NavigationContainer>
       {authenticated ? (
         <Tab.Navigator>
-          <Tab.Screen name="Home" component={FirstTabStack} />
+          <Tab.Screen name="Home" component={FirstTabStack} options={{headerShown: false}}/>
           <Tab.Screen name="Learn" component={SecondTabStack} />
           <Tab.Screen name="Health" component={ThirdTabStack} />
           <Tab.Screen name="Community" component={FourthTabStack} />
@@ -140,6 +147,22 @@ export default function AppNav() {
             <Stack.Screen 
             name="RegionPage" 
           component={RegionPage}
+          options={{
+            header: (props) => <CustomHeader {...props} />, headerShown: false, }}/>
+            <Stack.Screen 
+            name="SelectLanguagePage" 
+          component={SelectLanguagePage}
+          options={{
+            header: (props) => <CustomHeader {...props} />, headerShown: false, }}/>
+            <Stack.Screen 
+            name="InterestPage" 
+          component={InterestPage}
+          options={{
+            header: (props) => <CustomHeader {...props} />, headerShown: false, }}/>
+             <Stack.Screen 
+            name="EnrollCoursePage" 
+          component={EnrollCoursePage}
+          initialParams={{ setAuthenticated: setAuthenticated }}
           options={{
             header: (props) => <CustomHeader {...props} />, headerShown: false, }}/>
         </Stack.Navigator>

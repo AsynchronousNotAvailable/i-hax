@@ -1,7 +1,16 @@
+import { useFocusEffect } from '@react-navigation/native';
 import React from 'react';
 import { ScrollView, View, TouchableOpacity, Text, Image } from 'react-native';
 
 const LearnPublic = ({ navigation }) => {
+  useFocusEffect(
+    React.useCallback(() => {
+      navigation.setOptions({
+        //title: 'Home', // Set the title if needed
+        headerShown: false, // Hide the header
+      });
+    }, [])
+  );
   return (
     <ScrollView horizontal>
       <View style={{ flexDirection: 'row' }}>

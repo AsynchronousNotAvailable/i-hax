@@ -36,7 +36,7 @@ const LandingPage2 = ({ navigation }) => {
         </View>
       <View style={styles.row}>
         <TouchableOpacity
-          onPress={() => navigation.navigate('LoginPage')} >
+          onPress={() => navigation.navigate('SignUpPage')} >
            <View style={styles.label}>
             <View style={styles.textWrapper}>
               <Text style={styles.skipText}>Skip</Text>

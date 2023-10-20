@@ -1,4 +1,4 @@
-import React from 'react';
+import React , {useState} from 'react';
 import { View, Text, TouchableOpacity, StyleSheet, SafeAreaView,
     Image, } from 'react-native';
 import SignUpPage from './screens/sign_up_page';
@@ -9,6 +9,11 @@ import FeatherIcon from 'react-native-vector-icons/Feather';
 const SecondaryGradePage = ({ navigation }) => {
   const navigateToNextPage = () => {
     navigation.navigate('RegionPage'); // Navigate to the next page
+  };
+  const [selectedButton, setSelectedButton] = useState(null);
+  const buttons = ['Form 1', 'Form 2', 'Form 3', 'Form 4', 'Form 5', 'Form 6'];
+  const handleButtonPress = (index) => {
+    setSelectedButton(index);
   };
 
   return (
@@ -25,42 +30,27 @@ const SecondaryGradePage = ({ navigation }) => {
           <View style={styles.selected}>
                 <Text style={[styles.buttonText]}>Primary</Text>
             </View>
+            <View>
+      {buttons.map((button, index) => (
         <TouchableOpacity
-              onPress={(navigation) => navigateToNextPage(navigation)}>
-              <View style={styles.button}>
-                <Text style={[styles.buttonText]}>Form 1</Text>
-              </View>
-            </TouchableOpacity>
-        <TouchableOpacity
-              onPress={(navigation) => navigateToNextPage(navigation)}>
-              <View style={[styles.button]}>
-                <Text style={[styles.buttonText]}>Form 2</Text>
-              </View>
+          key={index}
+          onPress={() => handleButtonPress(index)}
+          style={[
+            styles.buttonss,
+            {
+              borderColor: selectedButton === index ? '#6562F5' : 'transparent',
+            },
+          ]}
+        >
+          <Text style={[styles.buttonText,{ color: selectedButton === index ? '#6562F5' : '#000' }]}>
+            {button}
+          </Text>
         </TouchableOpacity>
-        <TouchableOpacity
-              onPress={(navigation) => navigateToNextPage(navigation)}>
-              <View style={styles.button}>
-                <Text style={[styles.buttonText]}>Form 3</Text>
-              </View>
-        </TouchableOpacity>
-        <TouchableOpacity
-              onPress={(navigation) => navigateToNextPage(navigation)}>
-              <View style={styles.button}>
-                <Text style={[styles.buttonText]}>Form 4</Text>
-              </View>
-        </TouchableOpacity>
-        <TouchableOpacity
-              onPress={(navigation) => navigateToNextPage(navigation)}>
-              <View style={styles.button}>
-                <Text style={[styles.buttonText]}>Form 5</Text>
-              </View>
-        </TouchableOpacity>
-        <TouchableOpacity
-              onPress={(navigation) => navigateToNextPage(navigation)}>
-              <View style={styles.button}>
-                <Text style={[styles.buttonText]}>Form 6</Text>
-              </View>
-        </TouchableOpacity>
+      ))}
+    </View>
+    <TouchableOpacity onPress={() => navigation.navigate('RegionPage')} style={styles.progress}>
+        <Image source={require('../frontend/assets/progress1.png')}></Image>
+      </TouchableOpacity>
       </View>
     </SafeAreaView>
   );
@@ -72,17 +62,10 @@ const styles = StyleSheet.create({
       justifyContent: 'center', // Center content vertically
       alignItems: 'stretch',
     },
-    heroImage: {
-      width: '100%',
-      height: 380,
-    },
     content: {
       flex: 1,
       //justifyContent: 'space-between',
       paddingVertical: 24,
-      paddingHorizontal: 24,
-    },
-    contentHeader: {
       paddingHorizontal: 24,
     },
     title: {
@@ -92,20 +75,6 @@ const styles = StyleSheet.create({
       textAlign: 'center',
       marginBottom: 12,
       lineHeight: 40,
-    },
-    appName: {
-      backgroundColor: '#fff2dd',
-      transform: [
-        {
-          rotate: '-5deg',
-        },
-      ],
-      paddingHorizontal: 6,
-    },
-    appNameText: {
-      fontSize: 28,
-      fontWeight: '700',
-      color: '#281b52',
     },
     text: {
       fontSize: 15,
@@ -137,10 +106,6 @@ const styles = StyleSheet.create({
       borderWidth: 2,
       borderColor: '#ffffff',
     },
-    buttonEmpty: {
-      backgroundColor: 'transparent',
-      borderColor: '#6562F5',
-    },
     buttonText: {
       fontSize: 16,
       fontWeight: '400',
@@ -166,7 +131,27 @@ const styles = StyleSheet.create({
       backgroundColor: '#ffffff',
       borderWidth: 2,
       borderColor: '#6562F5',
-    }
+    },
+    buttonss: {
+      borderWidth: 5,
+      borderRadius: 5,
+      backgroundColor: '#ffffff',
+      paddingVertical: 16,
+        paddingHorizontal: 16,
+        display: 'flex',
+        alignItems: 'left',
+        justifyContent: 'center',
+        borderRadius: 12,
+        marginBottom: 12,
+        borderWidth: 2,
+        borderColor: '#ffffff',
+        maxWidth: 1000,
+        right: 1,
+      },
+      progress: {
+        top: 40,
+        left: 278,
+      }
   });
 
 export default SecondaryGradePage;

@@ -4,33 +4,35 @@ import { View, Text, TouchableOpacity, StyleSheet, SafeAreaView,
 import SignUpPage from './screens/sign_up_page';
 import LoginPage from './screens/loginPage';
 import FeatherIcon from 'react-native-vector-icons/Feather';
+import InterestPage from './interestPage';
 
-
-const TertiaryGradePage = ({ navigation }) => {
+const SelectLanguagePage = ({ navigation }) => {
   const navigateToNextPage = () => {
-    navigation.navigate('RegionPage'); // Navigate to the next page
+    navigation.navigate('InterestPage'); // Navigate to the next page
   };
   const [selectedButton, setSelectedButton] = useState(null);
-  const buttons = ['Year 1', 'Year 2', 'Year 3', 'Year 4', 'Year 5'];
+  const buttons = ['English', 'Melayu', '简体中文', 'हिन्दी (Hindi)', 'Deutsch', 'Français', 'Italiano', 'Nederlands', 'Español' ];
   const handleButtonPress = (index) => {
-    setSelectedButton(index);
+    if (index === selectedButton) {
+      // If the button is already selected, deselect it
+      setSelectedButton(null);
+    } else {
+      // Otherwise, select the button
+      setSelectedButton(index);
+    }
   };
 
   return (
     <SafeAreaView style={styles.container}>
       <TouchableOpacity
-            onPress={() => navigation.navigate('GradePage')}
+            onPress={() => navigation.navigate('RegionPage')}
             style={styles.backBtn}>
             <FeatherIcon color="#000000" name="arrow-left" size={28} />
           </TouchableOpacity>
       <Text style={styles.Headertext}>
-        Which grade are you in?
+        Select Your Language
       </Text>
-      <View style={styles.content}>
-          <View style={styles.selected}>
-                <Text style={[styles.buttonText]}>Primary</Text>
-            </View>
-            <View>
+      <View>
       {buttons.map((button, index) => (
         <TouchableOpacity
           key={index}
@@ -39,6 +41,7 @@ const TertiaryGradePage = ({ navigation }) => {
             styles.buttonss,
             {
               borderColor: selectedButton === index ? '#6562F5' : 'transparent',
+
             },
           ]}
         >
@@ -47,9 +50,8 @@ const TertiaryGradePage = ({ navigation }) => {
           </Text>
         </TouchableOpacity>
       ))}
-    </View>
-    <TouchableOpacity onPress={() => navigation.navigate('RegionPage')} style={styles.progress}>
-        <Image source={require('../frontend/assets/progress1.png')}></Image>
+        <TouchableOpacity onPress={() => navigation.navigate('InterestPage')} style={styles.progress}>
+        <Image source={require('../frontend/assets/progress3.png')}></Image>
       </TouchableOpacity>
       </View>
     </SafeAreaView>
@@ -62,10 +64,17 @@ const styles = StyleSheet.create({
       justifyContent: 'center', // Center content vertically
       alignItems: 'stretch',
     },
+    heroImage: {
+      width: '100%',
+      height: 380,
+    },
     content: {
       flex: 1,
       //justifyContent: 'space-between',
       paddingVertical: 24,
+      paddingHorizontal: 24,
+    },
+    contentHeader: {
       paddingHorizontal: 24,
     },
     title: {
@@ -75,6 +84,27 @@ const styles = StyleSheet.create({
       textAlign: 'center',
       marginBottom: 12,
       lineHeight: 40,
+    },
+    appName: {
+      backgroundColor: '#fff2dd',
+      transform: [
+        {
+          rotate: '-5deg',
+        },
+      ],
+      paddingHorizontal: 6,
+    },
+    appNameText: {
+      fontSize: 28,
+      fontWeight: '700',
+      color: '#281b52',
+    },
+    text: {
+      fontSize: 15,
+      lineHeight: 20,
+      fontWeight: '400',
+      color: '#000000',
+      textAlign: 'center',
     },
     Headertext: {
       ontSize: 30,
@@ -109,9 +139,9 @@ const styles = StyleSheet.create({
       height: 40,
       alignItems: 'center',
       justifyContent: 'center',
-      marginBottom: 16,
+      marginBottom: 8,
       left: 20,
-      top: 10,
+      top: 20,
     },
     selected: {
       paddingVertical: 12,
@@ -126,29 +156,27 @@ const styles = StyleSheet.create({
       borderColor: '#6562F5',
     },
     buttonss: {
-      borderWidth: 5,
-      borderRadius: 5,
-      backgroundColor: '#ffffff',
-      paddingVertical: 16,
-        paddingHorizontal: 16,
-        display: 'flex',
-        alignItems: 'left',
-        justifyContent: 'center',
-        borderRadius: 12,
-        marginBottom: 12,
-        borderWidth: 2,
-        borderColor: '#ffffff',
-        maxWidth: 1000,
-        right: 1,
-      },
-      progress: {
-        top: 110,
-        left: 278,
+        //padding: 10,
+        //margin: 5,
+        borderWidth: 5,
+        borderRadius: 5,
+        backgroundColor: '#ffffff',
+        paddingVertical: 16,
+          paddingHorizontal: 14,
+          display: 'flex',
+          alignItems: 'left',
+          justifyContent: 'center',
+          borderRadius: 12,
+          marginBottom: 8,
+          borderWidth: 2,
+          borderColor: '#ffffff',
+          maxWidth: 330,
+          right: -30,
+        },
+    progress: {
+        top: 10,
+        left: 298,
       }
   });
 
-export default TertiaryGradePage;
-
-
-
-
+export default SelectLanguagePage

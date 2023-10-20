@@ -272,7 +272,9 @@ const styles = StyleSheet.create({
     position: 'absolute',
     maxWidth: 30, 
     maxHeight: 30,
-    top: 30,
+    top: 7,
+    left: 5,
+    zIndex: 99999,
   },
   forwardIcon: {
     width: 40,
