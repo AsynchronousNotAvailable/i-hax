@@ -21,10 +21,7 @@ import EnrollCoursePage from "./enroll_course_page";
 import HomePage from "./HomePage";
 import CheckListPage from "./checklistPage";
 import LearnAnalyticPage from "./learn_analytic_page";
-
-import Learn_UM from "./screens/Learn_UM";
 import Learn_Page from "./screens/Learn_Page";
-import LearnPublicCourse2 from "./screens/Learn_UM_Course";
 import LearnUMCourse from "./screens/Learn_UM_Course";
 import CourseVideoPage from "./screens/CourseVideoPage";
 import Icon from "react-native-vector-icons/FontAwesome"; // You can choose any icon library you prefer
@@ -56,8 +53,8 @@ export function CustomHeader({ navigation }) {
   }
   return (
     <View style={{ flexDirection: 'row',  alignItems: 'center' }}>
-    <Text style={{ fontSize: 20 }}>Community</Text>
-    <TouchableOpacity onPress={handleChatPress} style={{ position: 'absolute', right: -130, top: 0 }}>
+    <Text style={{ fontSize: 20 }}>Meet The Community!</Text>
+    <TouchableOpacity onPress={handleChatPress} style={{ position: 'absolute', right: -100, top: 0 }}>
       <Icon name="comment" size={24} color="#6562F5" />
     </TouchableOpacity>
   </View>
@@ -164,7 +161,7 @@ export default function AppNav() {
     component={FirstTabStack}
     options={{
       tabBarIcon: ({ color, size }) => (
-        <Icon name="book" size={size} color={color} /> // Adjust the icon name and style as needed
+        <Icon name="home" size={size} color={color} /> // Adjust the icon name and style as needed
       ),
     }}
   />
