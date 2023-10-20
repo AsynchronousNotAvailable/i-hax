@@ -41,11 +41,6 @@ import ReportIssue from "./screens/Report";
 import Shop from "./screens/Shop";
 import ContactUsScreen from "./screens/Contact_Us";
 import FAQScreen from "./screens/FAQ";
-
-
-
-import LandingPage from "./screens/Landing_Page";
-import LoginPage from "./screens/Login_Page";
 import Health from "./screens/Health";
 import HealthStress1 from "./screens/Health_Stress1";
 import HealthStress2 from "./screens/Health_Stress2";
@@ -92,8 +87,35 @@ export default function AppNav() {
   function SecondTabStack() {
     return (
       <Stack.Navigator>
-        <Stack.Screen name="SecondTabMain" component={LearnPublic} />
-        <Stack.Screen name="OtherScreen" component={LearnPublicCourse} />
+        <Stack.Screen
+          name="LearnPage"
+          component={Learn_Page}
+          options={{ headerShown: false }}
+        />
+        {/* <Stack.Screen name="LearnPublic" component={LearnPublic} />
+        <Stack.Screen name="LearnUM" component={Learn_UM} /> */}
+        <Stack.Screen
+          name="Computer Hacking"
+          component={LearnPublicCourse}
+          options={{
+            headerBackTitle: "Back",
+          }}
+        />
+        <Stack.Screen
+          name="Fundamentals Of Programming"
+          component={LearnUMCourse}
+          options={{
+            headerBackTitle: "Back",
+          }}
+        />
+        <Stack.Screen
+          name="Course Video Page"
+          component={CourseVideoPage}
+          options={{
+            headerBackTitle: "Back",
+            headerShown: false,
+          }}
+        />
 
         {/* Add more screens as needed within the FirstTab */}
       </Stack.Navigator>
@@ -122,9 +144,13 @@ export default function AppNav() {
   function FourthTabStack() {
     return (
       <Stack.Navigator>
-        <Stack.Screen name="FourthTabMain" component={LearnPublic} />
-        <Stack.Screen name="OtherScreen" component={LearnPublicCourse} />
-        {/* Add more screens as needed within the FirstTab */}
+        <Stack.Screen name="FourthTabMain" component={Community} options={({ navigation }) => ({ headerTitle: (props) => <CustomHeader {...props}  navigation={navigation}/>,  headerTitleAlign: 'center'})}/>
+        <Stack.Screen name="CommunityTutor" component={CommunityTutor} options={{title: 'Search Tutor', headerTitleAlign: 'center'}} />
+        <Stack.Screen name="CommunityBookTutor" component={CommunityBookTutor} options={{title: 'Book a Session', headerTitleAlign: 'center'}} />
+        <Stack.Screen name="CommunityMessage" component={CommunityMessage}  options={({ route }) => ({title: route.params.tutorName, headerTitleAlign: 'center',})}/>
+        <Stack.Screen name="CommunityChat" component={CommunityChat} options={{title: 'Messages', headerTitleAlign: 'center'}} />
+        <Stack.Screen name="CommunityChatscreen" component={CommunityChatscreen} options={({ route }) => ({ title: route.params.username, headerTitleAlign: 'center',})}/>
+        <Stack.Screen name="CommunityPost" component={CommunityPost} options={{headerShown: false,  }} />
       </Stack.Navigator>
     );
   }
