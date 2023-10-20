@@ -1,7 +1,16 @@
 import React from 'react';
 import { View, ScrollView, Text, Image, TouchableOpacity, StyleSheet } from 'react-native';
+import { useNavigation } from '@react-navigation/native';
 
-const Profile = ({ navigation } ) => {
+
+const Profile = ({ navigation, route }) => {
+  const navigator = useNavigation();
+  const { setAuthenticated } = route.params;
+
+  const navigateToLoginPage = () => {
+    navigator.navigate('LoginPage'); // Navigate to the LoginPage in Landing Stack
+  };
+  
   return (
     <ScrollView style={styles.container}>
       <View style={styles.profileContainer}>
@@ -62,7 +71,7 @@ const Profile = ({ navigation } ) => {
         </View>
 
         <View style={styles.buttonRows}>
-        <TouchableOpacity style={styles.logoutButton}>
+        <TouchableOpacity style={styles.logoutButton}  onPress={() => setAuthenticated(false)} >
           <Text style={styles.logoutButtonText}>Log Out</Text>
         </TouchableOpacity>
       </View>

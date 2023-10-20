@@ -11,21 +11,57 @@ import {
 import GradePage from '../gradePage';
 import FeatherIcon from 'react-native-vector-icons/Feather';
 import Icon from 'react-native-vector-icons/FontAwesome';
+import url from '../url';
+import axios from 'axios';
+import SignUpFailedModal from '../components/Module1/SignUpFailed';
 
 const SignUpPage = ({ navigation }) => {
-    const navigateToNextPage = () => {
-      navigation.navigate('LandingPage4'); 
-    }
+  const [signUpFailed, setSignUpFailed] = useState(false);
+  const [errorMessage, setErrorMessage] = useState('');
+  const navigateToNextPage = () => {
+    navigation.navigate('LandingPage4'); 
+  }
+  
+  const closeSignUpFailedModal = () => {
+    setSignUpFailed(false);
+  };
+  
+    
+  
   const [form, setForm] = useState({
-    FullName: '',
+    full_name: '',
     username: '',
     phoneNumber: '',
     email: '',
     password: '',
-    school: '',
+    confirm_password: '',
+    university: '',
   });
+
+
+  const handleSignUp = async () => {
+    console.log(form);
+    const signUpResponse = await axios.post(`${url}/users/create`, form);
+    console.log(signUpResponse.data);
+    console.log(signUpResponse.data.message);
+    console.log(signUpResponse.status);
+    if (signUpResponse.data.message === 'Sign Up Successful') {
+      navigation.navigate('GradePage');
+    }
+    else {
+      console.log("Error signing up");
+      setSignUpFailed(true);
+      setErrorMessage('Sign Up Failed: ' + signUpResponse.data.message);
+    
+    }
+  }
   return (
     <SafeAreaView style={{ flex: 1, }}>
+       <SignUpFailedModal
+        visible={signUpFailed}
+        message={errorMessage}
+        onClose={closeSignUpFailedModal}
+      />
       <View style={styles.container}>
         <View style={styles.header}>
           <TouchableOpacity
@@ -42,11 +78,11 @@ const SignUpPage = ({ navigation }) => {
           <View style={styles.form}>
             <View style={styles.input}>
               <TextInput
-                onChangeText={FullName => setForm({ ...form, FullName })}
+                onChangeText={full_name => setForm({ ...form, full_name })}
                 placeholder="Full name"
                 placeholderTextColor="#6b7280"
                 style={styles.inputControl}
-                value={form.FullName}
+                value={form.full_name}
               />
               <FeatherIcon style={styles.icon} position= 'absolute' color="#000000" name="user" size={28}  />
             </View>
@@ -105,14 +141,28 @@ const SignUpPage = ({ navigation }) => {
               />
               <Icon style={styles.lock} position= 'absolute' color="#000000" name="lock" size={28}  />
             </View>
+
+            <View style={styles.input}>
+
+<TextInput
+  autoCorrect={false}
+  onChangeText={confirm_password => setForm({ ...form, confirm_password })}
+  placeholder="Confirm Password"
+  placeholderTextColor="#6b7280"
+  style={styles.inputControl}
+  secureTextEntry={true}
+  value={form.confirm_password}
+/>
+<Icon style={styles.lock} position= 'absolute' color="#000000" name="lock" size={28}  />
+</View>
             <View style={styles.input}>
 
               <TextInput
-                onChangeText={school => setForm({ ...form, school })}
+                onChangeText={university => setForm({ ...form, university })}
                 placeholder="School or Organization"
                 placeholderTextColor="#6b7280"
                 style={styles.inputControl}
-                value={form.school}
+                value={form.university}
               />
               <Icon style={styles.gra_cap} position= 'absolute' color="#000000" name="graduation-cap" size={28}  />
             </View>
@@ -122,7 +172,7 @@ const SignUpPage = ({ navigation }) => {
 
             <View style={styles.formAction}>
               <TouchableOpacity
-                onPress={() => navigation.navigate('GradePage')}>
+                onPress={() => handleSignUp()}>
                 <View style={styles.btn}>
                   <Text style={styles.btnText}>Sign Up</Text>
                 </View>

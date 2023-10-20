@@ -10,28 +10,60 @@ import {
 } from 'react-native';
 import FeatherIcon from 'react-native-vector-icons/Feather';
 import Icon from 'react-native-vector-icons/FontAwesome';
+import AsyncStorage from '@react-native-async-storage/async-storage';
+import axios from 'axios';
+import url from '../url';
+import SignUpFailedModal from '../components/Module1/SignUpFailed';
 
 
-const LoginPage = ({ navigation, route}) => {
+
+const LoginPage = ({ navigation, route }) => {
   const { setAuthenticated } = route.params;
-  const handleLogin = () => {
-        setAuthenticated(true);
-  }
-
-  // go back to previous page
-    const navigateToNextPage = () => {
-      navigation.navigate('LandingPage4'); 
+  const [loginFailed, setLoginFailed] = useState(false);
+  const [errorMessage, setErrorMessage] = useState('');
+  
+  const closeLoginFailedModal = () => {
+    setLoginFailed(false);
+  };
+  
+  const handleLogin = async () => {
+    console.log(form);
+    const loginResponse = await axios.post(`${url}/auth/login`, form);
+    console.log(loginResponse.data);
+    if (loginResponse.data.message === "Login successful") {
+      await AsyncStorage.setItem('userToken', loginResponse.data.access_token);
+      setAuthenticated(true);
     }
+    else {
+      setLoginFailed(true);
+      setErrorMessage("Login Error: Credentials Not Match")
+      await AsyncStorage.setItem('userToken', loginResponse.data.access_token);
+      setAuthenticated(true);
+    }
+        
+    }
+
   const [form, setForm] = useState({
     email: '',
     password: '',
   });
+
+  // go back to previous page
+    const goBack = () => {
+      navigation.navigate('LandingPage4'); 
+    }
+  
   return (
     <SafeAreaView style={{ flex: 1, }}>
+      <SignUpFailedModal
+        visible={loginFailed}
+        message={errorMessage}
+        onClose={closeLoginFailedModal}
+      />
       <View style={styles.container}>
         <View style={styles.header}>
           <TouchableOpacity
-            onPress={(navigation) => navigateToNextPage(navigation)}
+            onPress={(navigation) => goBack(navigation)}
             style={styles.backBtn}>
             <FeatherIcon color="#000000" name="arrow-left" size={28} />
           </TouchableOpacity>
