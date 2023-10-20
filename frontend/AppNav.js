@@ -21,6 +21,14 @@ import CommunityChatscreen from "./screens/Community_Chatscreen";
 import CommunityPost from "./screens/Community_Post";
 import React from 'react';
 import { View, Text, TouchableOpacity } from 'react-native';
+import Profile from "./screens/Profile_Main";
+import Language from "./screens/Language";
+import Achievement from "./screens/Achievement";
+import ReportIssue from "./screens/Report";
+import Shop from "./screens/Shop";
+import ContactUsScreen from "./screens/Contact_Us";
+import FAQScreen from "./screens/FAQ";
+
 
 
 const Tab = createBottomTabNavigator();
@@ -124,8 +132,13 @@ export default function AppNav() {
   function FifthTabStack() {
     return (
       <Stack.Navigator>
-        <Stack.Screen name="FifthTabMain" component={LearnPublic} />
-        <Stack.Screen name="CourseDetails" component={LearnPublicCourse} />
+       <Stack.Screen name="Profile" component={Profile} options={{ headerShown: false }} />
+          <Stack.Screen name="Language" component={Language} />
+          <Stack.Screen name="Achievement" component={Achievement} />
+          <Stack.Screen name="Shop" component={Shop} />
+          <Stack.Screen name="Help Centre" component={FAQScreen} />
+          <Stack.Screen name="Contact Us" component={ContactUsScreen} />
+          <Stack.Screen name="Report A Bug" component={ReportIssue} />
         {/* Add more screens as needed within the FirstTab */}
       </Stack.Navigator>
     );
