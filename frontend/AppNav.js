@@ -16,7 +16,7 @@ import HealthStressResult from "./screens/Health_StressResult";
 import HealthJournal from "./screens/Health_Journal";
 import HealthJournalPost from "./screens/Health_JournalPost";
 import HealthMeditation from "./screens/Health_meditation";
-
+import HealthMusic from "./screens/Health_Music";
 
 const Tab = createBottomTabNavigator();
 const Stack = createStackNavigator();
@@ -58,6 +58,7 @@ export default function AppNav() {
         <Stack.Screen name="HealthJournal" component={HealthJournal} options={{title: 'Journal', headerTitleAlign: 'center'}}/>
         <Stack.Screen name="HealthJournalPost" component={HealthJournalPost} options={{title: 'New Journal Entry', headerTitleAlign: 'center'}}/>
         <Stack.Screen name="HealthMeditation" component={HealthMeditation} options={{title: 'Meditation', headerTitleAlign: 'center'}}/>
+        <Stack.Screen name="HealthMusic" component={HealthMusic} options={{title: 'Meditation Music', headerTitleAlign: 'center'}}/>
         {/* Add more screens as needed within the FirstTab */}
       </Stack.Navigator>
     );

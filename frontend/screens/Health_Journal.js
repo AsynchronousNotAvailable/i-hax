@@ -103,7 +103,7 @@ const HealthJournal = ({ navigation }) => {
   };
 
   return (
-    <View>
+    <View >
       <ScrollView>
         <View style={{ flexDirection: 'row', margin: 15, paddingHorizontal: 10, justifyContent: 'space-between', }}>
           <View style={{ flexDirection: 'row', backgroundColor: 'white', padding: 10, alignItems: 'center', borderRadius: 15 }}>
