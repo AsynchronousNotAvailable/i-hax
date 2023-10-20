@@ -7,9 +7,33 @@ import {
   StyleSheet,
   ScrollView,
 } from "react-native";
+import * as Speech from 'expo-speech';
+
+
 
 
 const LearnUMCourse = () => {
+  const [isSpeaking, setIsSpeaking] = useState(false);
+
+  const text = `Polymorphism. Polymorphism refers
+  to the ability to associate many meanings to one method name
+  using late binding or dynamic binding. Binding refers to
+  the process of associating a method definition with a method
+  advocation. Early Binding associates a method definition with the method invocation when
+  the method is invoked (at run time). Java does not use late binding with private methods, methods
+  with the final modifier, and static methods. Polymorphism. An object of a derived class has the type of its base class. Assigning an object of a derived class to a variable of base
+  classis often called upcasting. BaseClass a = new BaseClass; DerivedClass b = new DerivedClass; a = b;`;
+  
+  const toggleSpeech = () => {
+    if (isSpeaking) {
+      // If speaking, stop speech
+      Speech.stop();
+    } else {
+      // If not speaking, start speech
+      Speech.speak(text);
+    }
+    setIsSpeaking(!isSpeaking);
+  };
 
   return (
     <View style={{ flex: 1 }}>
@@ -208,11 +232,8 @@ const LearnUMCourse = () => {
           </View>
         </View>
       </ScrollView>
-      <TouchableOpacity style={styles.floatingButton} onPress={() => {}}>
-        <Image
-          source={require("../assets/sound.png")}
-          style={{ height: 30, width: 30 }}
-        ></Image>
+      <TouchableOpacity style={styles.floatingButton} onPress={toggleSpeech}>
+        <Image source={require("../assets/sound.png")} style={{ height: 30, width: 30 }} />
       </TouchableOpacity>
     </View>
   );
