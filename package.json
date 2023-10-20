@@ -1,0 +1,10 @@
+{
+  "dependencies": {
+    "flag-icon-css": "^4.1.7",
+    "react-native-country-flag": "^2.0.2",
+    "react-native-ico-flags": "^4.1.5",
+    "react-native-svg": "^13.14.0",
+    "react-native-vector-icons": "^10.0.0",
+    "uuid": "^9.0.1"
+  }
+}
