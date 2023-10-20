@@ -29,7 +29,7 @@
     "react-native-country-flag": "^2.0.2",
     "react-native-flag-creator": "^1.0.4",
     "react-native-ico-flags": "^4.1.5",
-    "react-native-svg": "^13.14.0",
+    "react-native-svg": "13.9.0",
     "uuid": "^9.0.1"
   },
   "devDependencies": {
