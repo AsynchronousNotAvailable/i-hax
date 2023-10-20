@@ -4,8 +4,24 @@ import { NavigationContainer } from "@react-navigation/native";
 import { useState } from "react";
 import LearnPublic from "./screens/Learn_Public";
 import LearnPublicCourse from "./screens/Learn_Public_Course";
-import LandingPage from "./screens/Landing_Page";
-import LoginPage from "./screens/Login_Page";
+import LandingPage1 from "./screens/landing_page1";
+import LandingPage2 from "./screens/landing_page2";
+import LandingPage3 from "./screens/landing_page3";
+import LandingPage4 from "./screens/landing_page4";
+import LoginPage from "./screens/loginPage";
+import SignUpPage from "./screens/sign_up_page";
+import GradePage from "./gradePage";
+import PrimaryGradePage from "./primary_grade_page";
+import SecondaryGradePage from "./secondary_grade_page";
+import TertiaryGradePage from "./tertiary_grade_page";
+import RegionPage from "./region_page";
+import SelectLanguagePage from "./select_language_page";
+import InterestPage from "./interestPage";
+import EnrollCoursePage from "./enroll_course_page";
+import HomePage from "./HomePage";
+import CheckListPage from "./checklistPage";
+import LearnAnalyticPage from "./learn_analytic_page";
+
 import Learn_UM from "./screens/Learn_UM";
 import Learn_Page from "./screens/Learn_Page";
 import LearnPublicCourse2 from "./screens/Learn_UM_Course";
@@ -54,14 +70,9 @@ export default function AppNav() {
   function FirstTabStack() {
     return (
       <Stack.Navigator>
-        <Stack.Screen name="FirstTabMain" component={LearnPublic} />
-        <Stack.Screen
-          name="CourseDetails"
-          component={LearnPublicCourse}
-          options={{
-            headerBackTitle: "Back",
-          }}
-        />
+        <Stack.Screen name="FirstTabMain" component={HomePage} options={{headerShown: false}}/>
+        <Stack.Screen name="CheckListScreen" component={CheckListPage} options={{headerShown: false}}/>
+        <Stack.Screen name="LearningAnalyticScreen" component={LearnAnalyticPage} options={{headerShown: false}}/>
         {/* Add more screens as needed within the FirstTab */}
       </Stack.Navigator>
     );
@@ -148,7 +159,7 @@ export default function AppNav() {
     <NavigationContainer>
       {authenticated ? (
         <Tab.Navigator>
-          {/* <Tab.Screen
+          <Tab.Screen
     name="Home"
     component={FirstTabStack}
     options={{
@@ -156,7 +167,7 @@ export default function AppNav() {
         <Icon name="book" size={size} color={color} /> // Adjust the icon name and style as needed
       ),
     }}
-  /> */}
+  />
           <Tab.Screen
             name="Learn"
             component={SecondTabStack}
@@ -196,12 +207,78 @@ export default function AppNav() {
         </Tab.Navigator>
       ) : (
         <Stack.Navigator initialRouteName="Landing" headerMode="false">
-          <Stack.Screen name="Landing" component={LandingPage} />
-          <Stack.Screen
-            name="Login"
-            component={LoginPage}
-            initialParams={{ setAuthenticated: setAuthenticated }}
-          />
+          {/* <Stack.Screen name="Landing" component={LandingPage} /> */}
+          <Stack.Screen 
+          name="LandingPage1" 
+          component={LandingPage1} 
+          options={{headerShown: false, }}/>
+          <Stack.Screen 
+          name="LandingPage2" 
+          component={LandingPage2} 
+          options={{headerShown: false, }}/>
+          <Stack.Screen 
+          name="LandingPage3" 
+          component={LandingPage3}
+          options={{headerShown: false, }}/>
+          <Stack.Screen 
+          name="LandingPage4" 
+          component={LandingPage4}
+          options={{
+            header: (props) => <CustomHeader {...props} />, headerShown: false, }}/> 
+            {/* <Stack.Screen name="Login" component={LoginPage} initialParams={{ setAuthenticated: setAuthenticated }} /> */}
+            <Stack.Screen 
+          name="LoginPage" 
+          component={LoginPage}
+          initialParams={{ setAuthenticated: setAuthenticated }}
+          options={{
+            header: (props) => <CustomHeader {...props} />, headerShown: false, }}/>  
+            <Stack.Screen 
+          name="SignUpPage" 
+          component={SignUpPage}
+          initialParams={{ setAuthenticated: setAuthenticated }}
+          options={{
+            header: (props) => <CustomHeader {...props} />, headerShown: false, }}/>  
+             <Stack.Screen 
+          name="GradePage" 
+          component={GradePage}
+          options={{
+            header: (props) => <CustomHeader {...props} />, headerShown: false, }}/>
+            <Stack.Screen 
+          name="PrimaryGradePage" 
+          component={PrimaryGradePage}
+          options={{
+            header: (props) => <CustomHeader {...props} />, headerShown: false, }}/> 
+            <Stack.Screen 
+            name="SecondaryGradePage" 
+          component={SecondaryGradePage}
+          options={{
+            header: (props) => <CustomHeader {...props} />, headerShown: false, }}/>
+            <Stack.Screen 
+            name="TertiaryGradePage" 
+          component={TertiaryGradePage}
+          options={{
+            header: (props) => <CustomHeader {...props} />, headerShown: false, }}/>
+            <Stack.Screen 
+            name="RegionPage" 
+          component={RegionPage}
+          options={{
+            header: (props) => <CustomHeader {...props} />, headerShown: false, }}/>
+            <Stack.Screen 
+            name="SelectLanguagePage" 
+          component={SelectLanguagePage}
+          options={{
+            header: (props) => <CustomHeader {...props} />, headerShown: false, }}/>
+            <Stack.Screen 
+            name="InterestPage" 
+          component={InterestPage}
+          options={{
+            header: (props) => <CustomHeader {...props} />, headerShown: false, }}/>
+             <Stack.Screen 
+            name="EnrollCoursePage" 
+          component={EnrollCoursePage}
+          initialParams={{ setAuthenticated: setAuthenticated }}
+          options={{
+            header: (props) => <CustomHeader {...props} />, headerShown: false, }}/>
         </Stack.Navigator>
       )}
     </NavigationContainer>
