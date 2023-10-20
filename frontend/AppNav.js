@@ -44,6 +44,7 @@ import FAQScreen from "./screens/FAQ";
 
 
 
+
 const Tab = createBottomTabNavigator();
 const Stack = createStackNavigator();
 
@@ -140,7 +141,7 @@ export default function AppNav() {
   function FifthTabStack() {
     return (
       <Stack.Navigator>
-       <Stack.Screen name="Profile" component={Profile} options={{ headerShown: false }} />
+        <Stack.Screen name="Profile" component={Profile} options={{ headerShown: false }} />
           <Stack.Screen name="Language" component={Language} />
           <Stack.Screen name="Achievement" component={Achievement} />
           <Stack.Screen name="Shop" component={Shop} />
