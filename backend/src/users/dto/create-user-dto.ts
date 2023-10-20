@@ -18,4 +18,7 @@ export class CreateUserDto {
 
   @IsString()
   phoneNumber: string;
+
+  @IsString()
+  university: string;
 }
