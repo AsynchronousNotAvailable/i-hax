@@ -62,7 +62,7 @@ const Health = ({ navigation }) => {
           <TouchableOpacity onPress={() => navigation.navigate('HealthJournal')}>
             <Image source={require('../assets/journal.png')} style={{ marginRight: 10, width: 160 }} />
           </TouchableOpacity>
-          <TouchableOpacity>
+          <TouchableOpacity onPress={() => navigation.navigate('HealthMeditation')}>
             <Image source={require('../assets/meditation.png')} style={{ width: 160 }} />
           </TouchableOpacity>
         </View>

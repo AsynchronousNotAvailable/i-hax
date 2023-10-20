@@ -27,6 +27,7 @@
     "react-native-fs": "^2.20.0",
     "react-native-ico-flags": "^4.1.5",
     "react-native-paper": "^5.11.0",
+    "react-native-sound": "^0.11.2",
     "react-native-svg": "^13.14.0",
     "react-native-vector-icons": "^10.0.0",
     "react-native-video": "^5.2.1",
