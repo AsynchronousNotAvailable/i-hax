@@ -21,6 +21,7 @@ import EnrollCoursePage from "./enroll_course_page";
 import HomePage from "./HomePage";
 import CheckListPage from "./checklistPage";
 import LearnAnalyticPage from "./learn_analytic_page";
+import CalendarPage from "./calendarPage";
 
 
 const Tab = createBottomTabNavigator();
@@ -35,6 +36,7 @@ export default function AppNav() {
         <Stack.Screen name="FirstTabMain" component={HomePage} options={{headerShown: false}}/>
         <Stack.Screen name="CheckListScreen" component={CheckListPage} options={{headerShown: false}}/>
         <Stack.Screen name="LearningAnalyticScreen" component={LearnAnalyticPage} options={{headerShown: false}}/>
+        <Stack.Screen name="CalendarScreen" component={CalendarPage} options={{headerShown: false}}/>
         {/* Add more screens as needed within the FirstTab */}
       </Stack.Navigator>
     );
