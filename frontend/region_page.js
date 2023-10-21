@@ -12,14 +12,15 @@ const RegionPage = ({ navigation }) => {
     navigation.navigate('SelectLanguagePage'); // Navigate to the next page
   };
   const [selectedButton, setSelectedButton] = useState(null);
-  const buttons = [];
-  const handleButtonPress = (index) => {
-    if (index === selectedButton) {
+  const buttons = [require('../frontend/assets/malaysiaFlag.png')];
+  const btn = require('../frontend/assets/malaysiaFlag.png');
+  const handleButtonPress = (btn) => {
+    if (btn === selectedButton) {
       // If the button is already selected, deselect it
       setSelectedButton(null);
     } else {
       // Otherwise, select the button
-      setSelectedButton(index);
+      setSelectedButton(btn);
     }
   };
 
@@ -39,19 +40,22 @@ const RegionPage = ({ navigation }) => {
       </Text>
       <View style={styles.Flagcontainer}>
       <ScrollView contentContainerStyle={styles.scrollContainer}>
-        <View style={styles.content}>
-          <Text>
-            hello
-            waw
-            {"\n"}
-            <TouchableOpacity
-              onPress={(navigation) => navigateToNextPage(navigation)}>
-              <View style={styles.button}>
-                <Text style={[styles.buttonText]}>Year 1</Text>
-              </View>
-            </TouchableOpacity>
-          </Text>
+        <View >
+          <TouchableOpacity 
+          onPress={() => handleButtonPress(btn)}
+          style={[
+            styles.buttonss,
+            {
+              borderColor: selectedButton === btn ? '#6562F5' : 'transparent',
+            },
+          ]}>
+            <Image
+              source={require('../frontend/assets/malaysiaFlag.png')}
+              style={styles.malaysiaFlag}/>
+          </TouchableOpacity>
         </View>
+          <Image 
+           source={require('../frontend/assets/countryFlag.png')}/>  
       </ScrollView>
       <TouchableOpacity onPress={() => navigation.navigate('SelectLanguagePage')} style={styles.progress}>
         <Image source={require('../frontend/assets/progress2.png')}></Image>
@@ -166,18 +170,40 @@ const styles = StyleSheet.create({
     Flagcontainer: {
       //flex: 1,
       backgroundColor: 'white',
-      height: 450,
+      height: 470,
       width: 350,
       left: 20,
-      borderRadius: 8,
+      borderRadius: 12,
     },
     scrollContainer: {
       flexGrow: 1, // Allow the ScrollView to take up the entire space
     },
     progress: {
-      top: 40,
+      top: 115,
       left: 278,
-    }
+    },
+    malaysiaFlag: {
+      //left: 10,
+      right: 25,
+      marginTop: 5,
+    },
+    buttonss: {
+      //padding: 10,
+      //margin: 5,
+      borderWidth: 2,
+      backgroundColor: '#ffffff',
+      //paddingVertical: 16,
+        paddingHorizontal: 14,
+        display: 'flex',
+        alignItems: 'left',
+        justifyContent: 'center',
+        borderRadius: 12,
+        marginBottom: 0,
+        borderColor: '#ffffff',
+        maxWidth: 330,
+        left: 10,
+        right: 15,
+      },
   });
 
 export default RegionPage;
