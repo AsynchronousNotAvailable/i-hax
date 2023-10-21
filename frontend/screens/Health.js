@@ -25,7 +25,7 @@ const Health = ({ navigation }) => {
 
   return (
     <ScrollView style={{ backgroundColor: 'white' }}>
-      <View>
+      <View style={{marginTop: 30}}>
         <Text style={{ marginLeft: 27, fontSize: 17 }}>How are you feeling today ?</Text>
       </View>
 

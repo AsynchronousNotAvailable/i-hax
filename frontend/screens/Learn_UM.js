@@ -10,11 +10,11 @@ import {
 
 const LearnUM = ({ navigation, searchText }) => {
   const coursesRow1 = [
-    { id: 1, imageSource: require("../assets/code1.png"), text: "Data Structure" },
+    { id: 1, imageSource: require("../assets/code1.png"), text: "Fundamentals of Programming" },
     {
       id: 2,
-      imageSource: require("../assets/data.png"),
-      text: "Fundamental Of Programming",
+      imageSource: require("../assets/code2.png"),
+      text: "Data Structure",
     },
     { id: 3, imageSource: require("../assets/cloud2.png"), text: "Data Analysis" },
     { id: 4, imageSource: require("../assets/ml.png"), text: "Machine Learning" },

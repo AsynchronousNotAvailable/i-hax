@@ -33,15 +33,21 @@ const LearnAnalyticPage = ({ navigation }) => {
         <View style={{left: 22, bottom: 30}}>
             <View>
                 <Image 
-                    source={require('../frontend/assets/tabs.png')}
-                />
+              source={require('../frontend/assets/tabs.png')}
+              style={{ width: "90%" , height: 320}}
+              
+            />
+            
+            <View style={{ flexDirection: "column", alignItems: "center"}}>
+              
             </View>
             <View>
                 <Text style={styles.topics}>
                     Strongest Topics
                 </Text>
                 <Image 
-                    source={require('../frontend/assets/strongTopic.png')}
+              source={require('../frontend/assets/strongTopic.png')}
+              // style={{ width: "95%" }}
                 />
             </View>
             <View>
@@ -49,12 +55,17 @@ const LearnAnalyticPage = ({ navigation }) => {
                     Weakest Topics
                 </Text>
                 <Image 
-                    source={require('../frontend/assets/weakTopic.png')}
+              source={require('../frontend/assets/weakTopic.png')}
+              // style={{ width: "90%" }}
                 />
             </View>
             <View>
+            <Text style={styles.overview}>
+                   Progress Score
+                </Text>
                 <Image
-                    source={require('../frontend/assets/progressScore.png')}
+              source={require('../frontend/assets/progressScore.png')}
+              style={{left: 10,}}
                 />
             </View>
             <View>
@@ -62,9 +73,13 @@ const LearnAnalyticPage = ({ navigation }) => {
                     Student Performance Overview
                 </Text>
                 <Image
-                    source={require('../frontend/assets/performanceOverview.png')}
+              source={require('../frontend/assets/performanceOverview.png')}
+              style={{ width: "90%" }}
                 />
             </View>
+          </View>
+
+            
         </View>
       </ScrollView>
     </SafeAreaView>
@@ -99,16 +114,16 @@ const styles = StyleSheet.create({
       textAlign: 'center',
     },
     Headertext: {
-      fontSize: 30,
+      // fontSize: 30,
       lineHeight: 30,
-      fontWeight: '600',
+      fontWeight: '400',
       color: '#000000',
       textAlign: 'center',
-      fontSize: 27,
-      top: 16,
+      fontSize: 20,
+      top: 15,
       bottom: 100,
       margin: 10,
-      left: 65,
+      left: 25,
     },
     button: {
       paddingVertical: 12,

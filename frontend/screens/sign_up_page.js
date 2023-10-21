@@ -14,6 +14,7 @@ import Icon from 'react-native-vector-icons/FontAwesome';
 import url from '../url';
 import axios from 'axios';
 import SignUpFailedModal from '../components/Module1/SignUpFailed';
+import LoginPage from './loginPage';
 
 const SignUpPage = ({ navigation }) => {
   const [signUpFailed, setSignUpFailed] = useState(false);
@@ -71,7 +72,7 @@ const SignUpPage = ({ navigation }) => {
           </TouchableOpacity>
 
           <Text style={styles.title}>Welcome!</Text>
-          <Text style={styles.title2}>Sign Up to continue!</Text>
+          <Text style={styles.title2}>Sign Up to continue</Text>
         </View>
 
         <View>
@@ -203,9 +204,9 @@ const SignUpPage = ({ navigation }) => {
               />
              <Icon style={styles.apple}  color="#000000" name="apple" size={30}  />
              </View>
-             <View style={styles.signInAlr}>
-              <Text style={styles.alrText}>Already have an Account?</Text>
-              <Text style={styles.signInText}>SIGN IN</Text>
+             <View style={styles.signUpAlr}>
+              <Text style={styles.alrText}>Don't have an account? <Text style={styles.signUpText}>SIGN UP</Text></Text>
+              
             </View>
           </View>
         </View>
@@ -225,7 +226,9 @@ const styles = StyleSheet.create({
     //position: 'relative',
   },
   header: {
+    alignSelf: "center",
     paddingHorizontal: 24,
+    
   },
   backBtn: {
     width: 30,
@@ -241,18 +244,22 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
     color: '#181818',
     paddingHorizontal: 92,
+    marginBottom: 20,
   },
   title2: {
-    fontSize: 30,
-    fontWeight: 'bold',
+    fontSize: 20,
+    fontWeight: 'semi-bold',
     color: '#181818',
     marginBottom: 30,
     paddingHorizontal: 24,
+    alignSelf: 'center',
+
   },
   terms: {
     fontSize: 15,
     marginTop: 10,
     paddingHorizontal: 74,
+    alignSelf: "center",
   },
   form: {
     paddingHorizontal: 24,
@@ -356,24 +363,28 @@ const styles = StyleSheet.create({
      flexDirection: 'row',
      justifyContent: 'space-between',
      margin: 5,
-     marginTop: 10,
+    marginTop: 10,
+     marginBottom: 20,
   },
-  signInText: {
-    left: 228,
-    bottom:6,
-    color: 'blue',
+  signUpText: {
+    
+    color: "#0961F5",
     fontWeight: '600',
     fontSize: 14
   },
+  
   alrText: {
-    top: 11,
-    left: 55,
+    
     fontSize: 14,
     fontWeight: '400',
+    color: "#545454"
+    
+    
   },
-  signInAlr: {
-    marginTop: 8,
-    marginLeft: 5,
+  signUpAlr: {
+    flexDirection: "row",
+    alignSelf: "center",
+    
   }
 });
 

@@ -69,7 +69,7 @@ const LoginPage = ({ navigation, route }) => {
           </TouchableOpacity>
 
           <Text style={styles.title}>Welcome back!</Text>
-          <Text style={styles.title2}>Log In to continue!</Text>
+          <Text style={styles.title2}>Log In to continue</Text>
         </View>
 
         <View>
@@ -134,6 +134,7 @@ const LoginPage = ({ navigation, route }) => {
               . */}
               Or Continue With
             </Text>
+            <View style={{flexDirection: "column", justifyContent: "space-between"}}>
             <View style={styles.appleGoog}>
               <Image 
               //source={{ uri: '/Users/jacksheng/i-hax-frontend/assets/malaysia.png' }}
@@ -141,11 +142,14 @@ const LoginPage = ({ navigation, route }) => {
               style={styles.google}
               />
              <Icon style={styles.apple}  color="#000000" name="apple" size={30}  />
-             </View>
-             <View style={styles.signUpAlr}>
-              <Text style={styles.alrText}>Don't have an Account?</Text>
-              <Text style={styles.signUpText}>SIGN UP</Text>
+              </View>
+              <View style={styles.signUpAlr}>
+              <Text style={styles.alrText}>Don't have an account? <Text style={styles.signUpText}>SIGN UP</Text></Text>
+              
             </View>
+            </View>
+            
+            
           </View>
         </View>
       </View>
@@ -155,21 +159,24 @@ const LoginPage = ({ navigation, route }) => {
 
 const styles = StyleSheet.create({
   container: {
-    paddingVertical: 24,
+    paddingVertical: 40,
     paddingHorizontal: 0,
     flexGrow: 1,
     flexShrink: 1,
     flexBasis: 0,
     flex: 1,
+    height: "100%"
     //position: 'relative',
   },
   header: {
     paddingHorizontal: 24,
+    alignItems: "center",
+    justifyContent: "center"
   },
   backBtn: {
     width: 30,
     height: 40,
-    alignItems: 'center',
+    alignSelf: "left",
     justifyContent: 'center',
     marginBottom: 16,
     top: -13,
@@ -180,18 +187,24 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
     color: '#181818',
     paddingHorizontal: 60,
+    alignSelf: "center",
+    marginBottom: 10
   },
   title2: {
-    fontSize: 30,
-    fontWeight: 'bold',
+    fontSize: 20,
+    fontWeight: 'semi-bold',
     color: '#181818',
     marginBottom: 30,
     paddingHorizontal: 40,
+    alignSelf: "center",
   },
   terms: {
     fontSize: 15,
-    marginTop: 10,
-    paddingHorizontal: 74,
+    // paddingHorizontal: 74,
+    left: 10,
+    alignSelf: "center",
+    fontWeight: '600',
+    color: "#545454"
   },
   form: {
     paddingHorizontal: 24,
@@ -222,7 +235,7 @@ const styles = StyleSheet.create({
     color: '#fff',
   },
   input: {
-    marginBottom: 12,
+    marginBottom: 20,
   },
   email: {
     marginBottom: 12,
@@ -276,26 +289,28 @@ const styles = StyleSheet.create({
   appleGoog: {
      flexDirection: 'row',
      justifyContent: 'space-between',
-     margin: 5,
-     marginTop: 10,
-     padding: 10,
+    alignSelf: "center",
+    marginTop: 10,
+     marginBottom: 30,
   },
   signUpText: {
-    left: 220,
-    bottom:6,
-    color: 'blue',
+    
+    color: "#0961F5",
     fontWeight: '600',
     fontSize: 14
   },
   alrText: {
-    top: 11,
-    left: 55,
+    
     fontSize: 14,
     fontWeight: '400',
+    color: "#545454"
+    
+    
   },
   signUpAlr: {
-    marginTop: 8,
-    marginLeft: 5,
+    flexDirection: "row",
+    alignSelf: "center",
+    
   }
 });
 

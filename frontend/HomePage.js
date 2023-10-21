@@ -1,6 +1,6 @@
 import React , {useState} from 'react';
 import { View, Text, TouchableOpacity, StyleSheet, SafeAreaView,
-    Image, ScrollView, Modal } from 'react-native';
+    Image, ScrollView, Modal, ImageBackground } from 'react-native';
 import LoginPage from './screens/loginPage';
 import SignUpPage from "./screens/sign_up_page";
 import FeatherIcon from 'react-native-vector-icons/Feather';
@@ -10,11 +10,25 @@ const HomePage = ({ navigation }) => {
   const navigateToNextPage = () => {
     navigation.navigate('SignUpPage'); // Navigate to the next page
   };
-  const [isModalVisible, setModalVisible] = useState(false);
 
-  const toggleModal = () => {
-    setModalVisible(!isModalVisible);
-  };
+    const [activeButton, setActiveButton] = useState(null);
+  
+    const imageSources = {
+      button1: require('../frontend/assets/tabAEW.png'),
+      button2: require('../frontend/assets/tabCH.png'),
+      button3: require('../frontend/assets/tabCS.png'),
+      button4: require('../frontend/assets/tabEng.png'),
+      button5: require('../frontend/assets/tabProb.png'),
+      button6: require('../frontend/assets/tabPyProg.png'),
+    };
+
+    const toggleImage = (buttonName) => {
+      if (activeButton === buttonName) {
+        setActiveButton(null); // Toggle off
+      } else {
+        setActiveButton(buttonName); // Toggle on
+      }
+    };
 
   return (
     <SafeAreaView style={styles.container}>
@@ -28,7 +42,7 @@ const HomePage = ({ navigation }) => {
               />
             </TouchableOpacity>
             <Text style={styles.Headertext}>
-                Hello! Xin JIe
+                Hello! Xin Jie
             </Text>
             <TouchableOpacity
             onPress={() => navigation.navigate("CheckListScreen")}>
@@ -43,48 +57,32 @@ const HomePage = ({ navigation }) => {
         <Text style={styles.learningText}>
             Learning Progress
         </Text>
-        <TouchableOpacity
-            onPress={toggleModal}>
-                <View style={styles.circle1}></View>
-                {/* <Modal
-        animationType="slide" // You can choose a different animation type
-        transparent={true}
-        visible={isModalVisible}
-      >
-        <View style={styles.modalContainer}>
-          <View style={styles.modalContent}>
-            <Text>Pop-up Content</Text>
-            <TouchableOpacity onPress={toggleModal}>
-              <Text>Close Pop-up</Text>
-            </TouchableOpacity>
-          </View>
-        </View>
-      </Modal> */}
-            </TouchableOpacity>
-            <TouchableOpacity
-            onPress={(navigation) => navigateToNextPage(navigation)}>
-                <View style={styles.circle2}></View>
-            </TouchableOpacity>
-            <TouchableOpacity
-            onPress={(navigation) => navigateToNextPage(navigation)}>
+        <TouchableOpacity onPress={() => toggleImage('button2')}>
+        <View style={styles.circle1}></View>
+      </TouchableOpacity>
+      <TouchableOpacity onPress={() => toggleImage('button4')}>
+        <View style={styles.circle2}></View>
+      </TouchableOpacity>
+        <TouchableOpacity onPress={() => toggleImage('button1')}>
                 <View style={styles.circle3}></View>
             </TouchableOpacity>
-            <TouchableOpacity
-            onPress={(navigation) => navigateToNextPage(navigation)}>
+            <TouchableOpacity onPress={() => toggleImage('button6')}>
                 <View style={styles.circle4}></View>
             </TouchableOpacity>
-            <TouchableOpacity
-            onPress={(navigation) => navigateToNextPage(navigation)}>
+            <TouchableOpacity onPress={() => toggleImage('button5')}>
                 <View style={styles.circle5}></View>
             </TouchableOpacity>
-            <TouchableOpacity
-            onPress={(navigation) => navigateToNextPage(navigation)}>
+            <TouchableOpacity onPress={() => toggleImage('button3')}>
                 <View style={styles.circle6}></View>
             </TouchableOpacity>
-        <Image
-                source={require('../frontend/assets/TreeProgress.png')}
-                style={styles.treeProgress}
-              />
+        <ImageBackground source={require('../frontend/assets/TreeProgress.png')} style={styles.treeProgress} >
+                   {activeButton === "button2" && (<Image source={require('../frontend/assets/tabCH.png')} style={{left: -8, top: 20,}} />)}
+                   {activeButton === "button4" && (<Image source={require('../frontend/assets/tabEng.png')} style={{left: 15, top: 76,}} />)}
+                   {activeButton === "button1" && (<Image source={require('../frontend/assets/tabAEW.png')} style={{left: 140, top: 81,}} />)}
+                   {activeButton === "button6" && (<Image source={require('../frontend/assets/tabPyProg.png')} style={{left: 170, top: 40,}} />)}
+                   {activeButton === "button5" && (<Image source={require('../frontend/assets/tabProb.png')} style={{left: 238, top: 54,}} />)}
+                   {activeButton === "button3" && (<Image source={require('../frontend/assets/tabCS.png')} style={{left: 195, top: 101,}} />)}
+                </ImageBackground>
       </View>
       <View>
          <TouchableOpacity
@@ -103,7 +101,7 @@ const HomePage = ({ navigation }) => {
       <ScrollView horizontal={true}>
         <View style={styles.calendar}>
           <TouchableOpacity
-            onPress={(navigation) => navigateToNextPage(navigation)}>
+            onPress={() => navigation.navigate('CalendarScreen')}>
               <View>
                 <Image 
                 source={require('../frontend/assets/Cld1.png')}
@@ -145,9 +143,9 @@ const styles = StyleSheet.create({
     },
     content: {
       flex: 1,
-      //justifyContent: 'space-between',
       paddingVertical: 24,
       paddingHorizontal: 24,
+      
     },
     title: {
       fontSize: 28,
@@ -212,12 +210,14 @@ const styles = StyleSheet.create({
         right: 50,
     },
     iconChecklist: {
-        top: 27,
+        top: 30,
         left: 84,
     },
     treeProgress: {
+        height: 260,
+        width: 370,
         marginTop: 10,
-        right: 15,
+        
         zIndex: -999,
     },
     learningText: {
@@ -235,64 +235,68 @@ const styles = StyleSheet.create({
         width: 20,
         height: 20,
         borderRadius: 25,
-        backgroundColor: 'black',
-        zIndex: 999,
+        backgroundColor: 'transparent',
         position: 'absolute',
-        left: 105,
-        top: 42,
+        left: 125,
+        top: 43,
     },
     circle2: {
         width: 20,
         height: 20,
         borderRadius: 25,
-        backgroundColor: 'black',
-        zIndex: 999,
+        backgroundColor: 'transparent',
         position: 'absolute',
-        left: 81,
+        left: 101,
         top: 99,
     },
     circle3: {
         width: 20,
         height: 20,
         borderRadius: 25,
-        backgroundColor: 'black',
+        backgroundColor: 'transparent',
         zIndex: 999,
         position: 'absolute',
-        left: 122,
+        left: 142,
         top: 105,
     },
     circle4: {
         width: 20,
         height: 20,
         borderRadius: 25,
-        backgroundColor: 'black',
+        backgroundColor: 'transparent',
         zIndex: 999,
         position: 'absolute',
-        left: 153,
+        left: 173,
         top: 65,
     },
     circle5: {
         width: 22,
         height: 22,
         borderRadius: 25,
-        backgroundColor: 'black',
+        backgroundColor: 'transparent',
         zIndex: 999,
         position: 'absolute',
-        left: 220,
+        left: 240,
         top: 76,
     },
     circle6: {
         width: 20,
         height: 20,
         borderRadius: 25,
-        backgroundColor: 'black',
+        backgroundColor: 'transparent',
         zIndex: 999,
         position: 'absolute',
-        left: 178,
+        left: 198,
         top: 126,
     },
+    imageContainer2: {
+      margin: 20,
+      top: 50,
+      zIndex: 2,
+      position: "relative"
+    },
     analytic: {
-      left: 23,
+      alignSelf: "center"
     },
     medCalendar: {
       top: 10,
@@ -330,11 +334,59 @@ const styles = StyleSheet.create({
       },
       eventList: {
         marginLeft: 16,
-      }
+      },
+      image: { // Set your desired height
+        top: 120,
+        left: 80,
+      },
+      imageContainer: {
+        position: 'relative',
+        left: 7,
+        bottom: -13,
+        zIndex: 99,
+      },
+      imageContainer1: {
+        position: 'absolute',
+        left: 20,
+        bottom: -13,
+        zIndex: 999,
+        margin: 10,
+      },
+      image1: {
+        position: 'absolute',
+        left: 20,
+        bottom: -13,
+        // zIndex: 999,
+        margin: 100,
+      },
+      imageContainer2: {
+        position: 'absolute',
+        left: 20,
+        bottom: -13,
+        zIndex: 999,
+        margin: 10,
+      },
+      image2: {
+        position: 'absolute',
+        left: 20,
+        bottom: -13,
+        // zIndex: 999,
+        margin: 100,
+      },
+      imageContainer3: {
+        position: 'absolute',
+        left: 20,
+        bottom: -13,
+        zIndex: 999,
+        margin: 10,
+      },
+      image3: {
+        position: 'absolute',
+        left: 20,
+        bottom: -13,
+        // zIndex: 999,
+        margin: 100,
+      },
   });
 
 export default HomePage;
-
-
-
-

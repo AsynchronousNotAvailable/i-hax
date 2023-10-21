@@ -14,7 +14,7 @@ const CheckListPage = ({ navigation }) => {
 
   return (
     <SafeAreaView style={styles.container}>
-        <View style={{flexDirection: "row", height: 200}}>
+        <View style={{flexDirection: "row", height: 200,  justifyContent: "flex-start"}}>
             <TouchableOpacity
             onPress={(navigation) => navigateToNextPage(navigation)}
             style={styles.backBtn}>
@@ -45,14 +45,16 @@ const CheckListPage = ({ navigation }) => {
 const styles = StyleSheet.create({
     container: {
       flex: 1,
-      justifyContent: 'center', // Center content vertically
-      alignItems: 'stretch',
+      // justifyContent: 'center', // Center content vertically
+    alignItems: 'stretch',
+      flexDirection: "column"
     },
     content: {
       flex: 1,
       //justifyContent: 'space-between',
+      alignItems: "center",
       paddingVertical: 24,
-      paddingHorizontal: 24,
+      paddingHorizontal: 15,
     },
     title: {
       fontSize: 28,
@@ -70,9 +72,9 @@ const styles = StyleSheet.create({
       textAlign: 'center',
     },
     Headertext: {
-      fontSize: 30,
+    
       lineHeight: 30,
-      fontWeight: '600',
+      fontWeight: '400',
       color: '#000000',
       textAlign: 'center',
       fontSize: 27,
@@ -80,7 +82,7 @@ const styles = StyleSheet.create({
       bottom: 40,
       margin: 10,
       marginBottom: 50,
-      left: 60,
+      
     },
     button: {
       paddingVertical: 12,
@@ -102,19 +104,21 @@ const styles = StyleSheet.create({
     backBtn: {
       width: 40,
       height: 40,
-      alignItems: 'center',
+      alignItems: 'flex-start',
       justifyContent: 'center',
       marginBottom: 16,
       left: 20,
       top: 20,
     },
     treasure: {
-        right: 20,
-        bottom: 170,
+        
+      bottom: 170,
+      // width: "100%",
     },
     mission: {
-        right: 15,
-        bottom: 165,
+        
+      bottom: 165,
+      
     },
   });
 

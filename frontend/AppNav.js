@@ -53,6 +53,7 @@ import HealthJournalPost from "./screens/Health_JournalPost";
 import HealthMeditation from "./screens/Health_meditation";
 
 import HealthMusic from "./screens/Health_Music";
+import LogoPage from "./screens/Landing_Logo";
 
 const Tab = createBottomTabNavigator();
 const Stack = createStackNavigator();
@@ -126,7 +127,7 @@ export default function AppNav() {
   function ThirdTabStack() {
     return (
       <Stack.Navigator>
-        <Stack.Screen name="ThirdTabMain" component={Health} options={{title: 'Mental Health', headerTitleAlign: 'center'}}/>
+        <Stack.Screen name="ThirdTabMain" component={Health} options={{title: 'Mental Health', headerTitleAlign: 'center', headerShown: false}}/>
         <Stack.Screen name="HealthStress1" component={HealthStress1} options={{title: 'Assessment', headerTitleAlign: 'center'}}/>
         <Stack.Screen name="HealthStress2" component={HealthStress2} options={{title: 'Assessment', headerTitleAlign: 'center'}}/>
         <Stack.Screen name="HealthStress3" component={HealthStress3} options={{title: 'Assessment', headerTitleAlign: 'center'}}/>
@@ -226,7 +227,11 @@ export default function AppNav() {
         </Tab.Navigator>
       ) : (
         <Stack.Navigator initialRouteName="Landing" headerMode="false">
-          {/* <Stack.Screen name="Landing" component={LandingPage} /> */}
+            {/* <Stack.Screen name="Landing" component={LandingPage} /> */}
+            <Stack.Screen 
+          name="LogoPage" 
+          component={LogoPage} 
+        />
           <Stack.Screen 
           name="LandingPage1" 
           component={LandingPage1} 

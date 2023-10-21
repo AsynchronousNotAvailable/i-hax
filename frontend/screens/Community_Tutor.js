@@ -99,17 +99,18 @@ const CommunityTutor = () => {
       <View style={styles.searchContainer}>
         <Icon name="search" size={20} color="grey" style={{ marginLeft: 20, marginRight:10}} />
         <TextInput
-          style={styles.input}
+          
           placeholder="Search"
           value={searchText}
           onChangeText={(text) => setSearchText(text)}
           onEndEditing={() => handleSearch(searchText)} // Add this line
         />
       </View>
-      <ScrollView vertical={true} horizontal={false}>
+      <ScrollView vertical={true} horizontal={false} >
         {searchText ? (
           filteredTutors.map((tutor) => (
-            <View key={tutor.id} style={styles.tutorCard}>
+            <View style={{alignItems: "center"}}>
+            <View key={tutor.id} style={styles.tutorCard} >
               <View style={styles.rowContainer}>
                 <Image source={tutorsAvatar[tutor.avatar] || placeholderImage} style={styles.avatar} />
                 <View style={styles.textContainer}>
@@ -126,9 +127,10 @@ const CommunityTutor = () => {
                 </TouchableOpacity>
               </View>
             </View>
+            </View>
           ))
         ) : (
-          <View>
+          <View style={{alignItems: "center"}}>
             {tutorsData.map((tutor) => (
               <View key={tutor.id} style={styles.tutorCard}>
                 <View style={styles.rowContainer}>
@@ -176,6 +178,7 @@ const styles = StyleSheet.create({
     width: 390,
     backgroundColor: 'white',
     marginBottom: 10,
+    
   },
   rowContainer: {
     flexDirection: 'row',
@@ -201,7 +204,7 @@ const styles = StyleSheet.create({
     backgroundColor: 'white',
     marginBottom: 10,
     margin: 10,
-    marginLeft: 20,
+    marginLeft: 40,
   },
   searchText: {
     fontSize: 17,

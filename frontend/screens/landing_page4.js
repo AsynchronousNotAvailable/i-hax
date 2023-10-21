@@ -29,8 +29,8 @@ const LandingPage4 = ({ navigation }) => {
       <View style={styles.content}>
         <View style={styles.contentHeader}>
           <Text style={styles.text}>
-            Note: If you are a student, {"\n"}
-            sign up using your school email account to access all {"\n"}
+            Note: If you are a student, 
+            sign up using your school email account to access all
             school resources {"\n"}
           </Text>
         </View>
@@ -60,14 +60,16 @@ const styles = StyleSheet.create({
       alignItems: 'stretch',
     },
     heroImage: {
-      width: '100%',
-      height: 380,
+      width: '90%',
+      height: 300,
+      alignSelf: "center"
     },
     content: {
       flex: 1,
-      justifyContent: 'space-between',
-      paddingVertical: 24,
-      paddingHorizontal: 24,
+      // justifyContent: 'space-between',
+      paddingVertical: 40,
+      paddingHorizontal: 30,
+
     },
     contentHeader: {
       paddingHorizontal: 24,
@@ -100,9 +102,10 @@ const styles = StyleSheet.create({
       fontWeight: '400',
       color: '#000000',
       textAlign: 'center',
+      marginBottom: 30,
     },
     Headertext: {
-      ontSize: 30,
+      fontSize: 30,
       lineHeight: 30,
       fontWeight: '600',
       color: '#000000',
@@ -118,7 +121,7 @@ const styles = StyleSheet.create({
       alignItems: 'center',
       justifyContent: 'center',
       borderRadius: 8,
-      marginBottom: 12,
+      marginBottom: 20,
       backgroundColor: '#6562F5',
       borderWidth: 2,
       borderColor: '#6562F5',
