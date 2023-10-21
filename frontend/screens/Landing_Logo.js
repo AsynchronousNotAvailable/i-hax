@@ -56,7 +56,7 @@ const styles = StyleSheet.create({
   text: {
       fontSize: 15,
       fontStyle: "italic",
-      fontFamily: "Sans-serif"
+      
        
   },
 });

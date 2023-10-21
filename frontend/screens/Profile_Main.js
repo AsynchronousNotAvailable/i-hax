@@ -46,7 +46,7 @@ const Profile = ({ navigation, route }) => {
         <Text style={styles.title}>Settings and Preferences</Text>
         <View style={styles.buttonRow}>
         <TouchableOpacity style={styles.button}>
-          <Text>Notifications</Text>
+          <Text style={{fontSize: 20}}>Notifications</Text>
         </TouchableOpacity>
         </View>
         <View style={styles.buttonRow}>
@@ -104,6 +104,7 @@ const styles = StyleSheet.create({
     borderTopLeftRadius: 20,
     borderTopRightRadius: 20,
     marginTop: 10,
+    paddingVertical: 24
   },
   buttonRows: {
     margin: 20,
@@ -115,15 +116,15 @@ const styles = StyleSheet.create({
   },
   button: {
     flex: 1,
-    backgroundColor: '#EEECF6',
+    backgroundColor: '#C6B8FF',
+    opacity: 0.15,
     borderRadius: 10,
-    padding: 10,
+    padding: 20,
     margin: 5,
     alignItems: 'left',
   },
   title: {
     fontSize: 18,
-    marginTop: 10,
   },
   logoutButton: {
     backgroundColor: 'red',
