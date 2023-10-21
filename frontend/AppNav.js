@@ -51,6 +51,7 @@ import HealthStressResult from "./screens/Health_StressResult";
 import HealthJournal from "./screens/Health_Journal";
 import HealthJournalPost from "./screens/Health_JournalPost";
 import HealthMeditation from "./screens/Health_meditation";
+
 import HealthMusic from "./screens/Health_Music";
 
 const Tab = createBottomTabNavigator();
