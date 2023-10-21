@@ -216,7 +216,9 @@ const styles = StyleSheet.create({
     treeProgress: {
         height: 260,
         width: 370,
-        marginTop: 10,
+      marginTop: 10,
+     
+        
         
         zIndex: -999,
     },
@@ -296,7 +298,8 @@ const styles = StyleSheet.create({
       position: "relative"
     },
     analytic: {
-      alignSelf: "center"
+      alignSelf: "center",
+      width: "80%"
     },
     medCalendar: {
       top: 10,
@@ -309,7 +312,8 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         backgroundColor: 'rgba(0, 0, 0, 0.5)',
       },
-      modalContent: {
+  modalContent: {
+        
         width: 200,
         height: 200,
         backgroundColor: 'white',
@@ -319,6 +323,7 @@ const styles = StyleSheet.create({
       calendar: {
         flexDirection: 'row',
         marginBottom: 20,
+        left: 10,
       },
       Cld: {
         marginRight: 10,

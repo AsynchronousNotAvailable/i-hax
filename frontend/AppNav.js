@@ -54,6 +54,7 @@ import HealthMeditation from "./screens/Health_meditation";
 
 import HealthMusic from "./screens/Health_Music";
 import LogoPage from "./screens/Landing_Logo";
+import CalendarPage from "./calendarPage";
 
 const Tab = createBottomTabNavigator();
 const Stack = createStackNavigator();
@@ -79,8 +80,9 @@ export default function AppNav() {
     return (
       <Stack.Navigator>
         <Stack.Screen name="FirstTabMain" component={HomePage} options={{headerShown: false}}/>
-        <Stack.Screen name="CheckListScreen" component={CheckListPage} options={{headerShown: false}}/>
-        <Stack.Screen name="LearningAnalyticScreen" component={LearnAnalyticPage} options={{headerShown: false}}/>
+        <Stack.Screen name="CheckListScreen" component={CheckListPage} options={{headerShown: false,}}/>
+        <Stack.Screen name="LearningAnalyticScreen" component={LearnAnalyticPage} options={{headerBackTitle: "Back", headerTitle: "Learning Analytics"}}/>
+        <Stack.Screen name="CalendarScreen" component={CalendarPage} options={{headerShown: false}}/>
         {/* Add more screens as needed within the FirstTab */}
       </Stack.Navigator>
     );
@@ -115,7 +117,7 @@ export default function AppNav() {
           component={CourseVideoPage}
           options={{
             headerBackTitle: "Back",
-            headerShown: false,
+            title: ""
           }}
         />
 
@@ -128,13 +130,13 @@ export default function AppNav() {
     return (
       <Stack.Navigator>
         <Stack.Screen name="ThirdTabMain" component={Health} options={{title: 'Mental Health', headerTitleAlign: 'center', headerShown: false}}/>
-        <Stack.Screen name="HealthStress1" component={HealthStress1} options={{title: 'Assessment', headerTitleAlign: 'center'}}/>
-        <Stack.Screen name="HealthStress2" component={HealthStress2} options={{title: 'Assessment', headerTitleAlign: 'center'}}/>
-        <Stack.Screen name="HealthStress3" component={HealthStress3} options={{title: 'Assessment', headerTitleAlign: 'center'}}/>
-        <Stack.Screen name="HealthStress4" component={HealthStress4} options={{title: 'Assessment', headerTitleAlign: 'center'}}/>
-        <Stack.Screen name="HealthStress5" component={HealthStress5} options={{title: 'Assessment', headerTitleAlign: 'center'}}/>
+        <Stack.Screen name="HealthStress1" component={HealthStress1} options={{title: 'Assessment', headerTitleAlign: 'center', headerBackTitle: "Back",}}/>
+        <Stack.Screen name="HealthStress2" component={HealthStress2} options={{title: 'Assessment', headerTitleAlign: 'center', headerBackTitle: "Back",}}/>
+        <Stack.Screen name="HealthStress3" component={HealthStress3} options={{title: 'Assessment', headerTitleAlign: 'center', headerBackTitle: "Back",}}/>
+        <Stack.Screen name="HealthStress4" component={HealthStress4} options={{title: 'Assessment', headerTitleAlign: 'center', headerBackTitle: "Back",}}/>
+        <Stack.Screen name="HealthStress5" component={HealthStress5} options={{title: 'Assessment', headerTitleAlign: 'center', headerBackTitle: "Back",}}/>
         <Stack.Screen name="HealthStressResult" component={HealthStressResult} options={{title: 'Results', headerTitleAlign: 'center'}}/>
-        <Stack.Screen name="HealthJournal" component={HealthJournal} options={{title: 'Journal', headerTitleAlign: 'center'}}/>
+        <Stack.Screen name="HealthJournal" component={HealthJournal} options={{title: 'Journal', headerTitleAlign: 'center', }}/>
         <Stack.Screen name="HealthJournalPost" component={HealthJournalPost} options={{title: 'New Journal Entry', headerTitleAlign: 'center'}}/>
         <Stack.Screen name="HealthMeditation" component={HealthMeditation} options={{title: 'Meditation', headerTitleAlign: 'center'}}/>
         <Stack.Screen name="HealthMusic" component={HealthMusic} options={{title: 'Meditation Music', headerTitleAlign: 'center'}}/>
@@ -147,11 +149,11 @@ export default function AppNav() {
     return (
       <Stack.Navigator>
         <Stack.Screen name="FourthTabMain" component={Community} options={({ navigation }) => ({ headerTitle: (props) => <CustomHeader {...props}  navigation={navigation}/>,  headerTitleAlign: 'center'})}/>
-        <Stack.Screen name="CommunityTutor" component={CommunityTutor} options={{title: 'Search Tutor', headerTitleAlign: 'center'}} />
-        <Stack.Screen name="CommunityBookTutor" component={CommunityBookTutor} options={{title: 'Book a Session', headerTitleAlign: 'center'}} />
+        <Stack.Screen name="CommunityTutor" component={CommunityTutor} options={{title: 'Search Tutor', headerTitleAlign: 'center', headerBackTitle:"Community"}} />
+        <Stack.Screen name="CommunityBookTutor" component={CommunityBookTutor} options={{title: 'Book a Session', headerTitleAlign: 'center', headerBackTitle:"Search Tutor"}} />
         <Stack.Screen name="CommunityMessage" component={CommunityMessage}  options={({ route }) => ({title: route.params.tutorName, headerTitleAlign: 'center',})}/>
-        <Stack.Screen name="CommunityChat" component={CommunityChat} options={{title: 'Messages', headerTitleAlign: 'center'}} />
-        <Stack.Screen name="CommunityChatscreen" component={CommunityChatscreen} options={({ route }) => ({ title: route.params.username, headerTitleAlign: 'center',})}/>
+        <Stack.Screen name="CommunityChat" component={CommunityChat} options={{title: 'Messages', headerTitleAlign: 'center', headerBackTitle:"Community"}} />
+        <Stack.Screen name="CommunityChatscreen" component={CommunityChatscreen} options={({ route }) => ({ title: route.params.username, headerTitleAlign: 'center', })}/>
         <Stack.Screen name="CommunityPost" component={CommunityPost} options={{headerShown: false,  }} />
       </Stack.Navigator>
     );

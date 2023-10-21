@@ -70,7 +70,7 @@ const CommunityPost = ({ navigation, route }) => {
 
 const styles = StyleSheet.create({
   header: {
-    marginTop:45,
+    marginTop:25,
     flexDirection: 'row',
     justifyContent: 'space-between',
     alignItems: 'center',

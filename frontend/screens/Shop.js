@@ -9,11 +9,12 @@ const Shop = () => {
           <Image source={require('../assets/magnifyglass.png')} style={styles.searchIcon} />
           <Text style={styles.searchText}>Search Rewards</Text>
         </View>
-        <View style={styles.coinContainer}>
+       
+      </View>
+      <View style={styles.coinContainer}>
           <Text style={styles.coinText}>3270</Text>
           <Image source={require('../assets/coin_icon.png')} style={styles.coinIcon} />
         </View>
-      </View>
 
       <RewardRow
         title="Apple Tree"
@@ -114,7 +115,6 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     backgroundColor: '#F6F4FF',
     borderRadius: 10,
-    alignItems: 'center',
     paddingVertical: 10,
     paddingHorizontal: 20,
   },
@@ -129,7 +129,8 @@ const styles = StyleSheet.create({
   },
   coinContainer: {
     flexDirection: 'row',
-    alignItems: 'right',
+    width: "100%",
+    justifyContent: "flex-end"
   },
   coinText: {
     fontSize: 18,

@@ -1,5 +1,13 @@
-import React, {useState} from 'react';
-import { View, Text, ScrollView, Image, Modal, StyleSheet, TouchableOpacity } from 'react-native';
+import React, { useState } from "react";
+import {
+  View,
+  Text,
+  ScrollView,
+  Image,
+  Modal,
+  StyleSheet,
+  TouchableOpacity,
+} from "react-native";
 
 const Achievement = () => {
   const [certificateModalVisible, setCertificateModalVisible] = useState(false);
@@ -10,31 +18,37 @@ const Achievement = () => {
 
   return (
     <ScrollView contentContainerStyle={styles.container}>
-      <Text style={styles.header}>Achievements</Text>
+      
       <View style={styles.levelContainer}>
         <View style={styles.levelBox}>
           <Text style={styles.levelText}>Level 2</Text>
           <Text style={styles.levelDescription}>480xp more to level up</Text>
-          <View style={styles.progressBarContainer}>
-          <View style={[styles.progressBar, { width: 70 }]}></View>
+
+         
         </View>
-        </View>
+        <View style={styles.progressBarContainer}>
+  <View style={styles.progressBar}>
+    <View style={styles.progressFill}></View>
+  </View>
+</View>
       </View>
       <Text style={styles.title}>Badges</Text>
       <View style={styles.badgesContainer}>
         <View style={styles.badgeRow}>
           <Image
-            source={require('../assets/almost_perfect_badge.png')}
+            source={require("../assets/almost_perfect_badge.png")}
             style={styles.badgeImage}
           />
           <View>
             <Text style={styles.badgeTitle}>Almost Perfect</Text>
-            <Text style={styles.badgeDescription}>Scored 90% or above on a quiz</Text>
+            <Text style={styles.badgeDescription}>
+              Scored 90% or above on a quiz
+            </Text>
           </View>
         </View>
         <View style={styles.badgeRow}>
           <Image
-            source={require('../assets/quiz_genius_badge.png')}
+            source={require("../assets/quiz_genius_badge.png")}
             style={styles.badgeImage}
           />
           <View>
@@ -44,18 +58,22 @@ const Achievement = () => {
         </View>
       </View>
       <Text style={styles.title}>Medals (5/20)</Text>
-      <ScrollView horizontal contentContainerStyle={styles.medalsContainer} showsHorizontalScrollIndicator={false}>
+      <ScrollView
+        horizontal
+        contentContainerStyle={styles.medalsContainer}
+        showsHorizontalScrollIndicator={false}
+      >
         <View style={styles.medalColumn}>
           <Image
-            source={require('../assets/medals1.png')}
+            source={require("../assets/medals1.png")}
             style={styles.medalImage}
           />
-          <Text style={styles.medalTitle}>Einstein's Apprentice</Text>
+          <Text style={styles.medalTitle}>{"  "}Einstein's Apprentice</Text>
           <Text style={styles.medalLevel}>Level 1</Text>
         </View>
         <View style={styles.medalColumn}>
           <Image
-            source={require('../assets/medals1.png')}
+            source={require("../assets/medals1.png")}
             style={styles.medalImage}
           />
           <Text style={styles.medalTitle}>Book Worm</Text>
@@ -63,7 +81,7 @@ const Achievement = () => {
         </View>
         <View style={styles.medalColumn}>
           <Image
-            source={require('../assets/medals1.png')}
+            source={require("../assets/medals1.png")}
             style={styles.medalImage}
           />
           <Text style={styles.medalTitle}>Coding Wizard</Text>
@@ -71,7 +89,7 @@ const Achievement = () => {
         </View>
         <View style={styles.medalColumn}>
           <Image
-            source={require('../assets/medals2.png')}
+            source={require("../assets/medals2.png")}
             style={styles.medalImage}
           />
           <Text style={styles.medalTitle}>Science Sage</Text>
@@ -79,7 +97,7 @@ const Achievement = () => {
         </View>
         <View style={styles.medalColumn}>
           <Image
-            source={require('../assets/medals2.png')}
+            source={require("../assets/medals2.png")}
             style={styles.medalImage}
           />
           <Text style={styles.medalTitle}>Math Maestro</Text>
@@ -91,58 +109,60 @@ const Achievement = () => {
       <View style={styles.certificatesContainer}>
         <View style={styles.certificateRow}>
           <Image
-            source={require('../assets/Cert_medal.png')}
+            source={require("../assets/Cert_medal.png")}
             style={styles.certificateImage}
           />
           <View>
             <Text style={styles.certificateTitle}>Programming in Python</Text>
-            <Text style={styles.certificateDescription}>Grade Achieved 98%</Text>
-            <Text style={styles.certificateLink}onPress={toggleCertificateModal}>View Certificate</Text>
+            <Text style={styles.certificateDescription}>
+              Grade Achieved 98%
+            </Text>
+            <Text
+              style={styles.certificateLink}
+              onPress={toggleCertificateModal}
+            >
+              View Certificate
+            </Text>
             <Modal
-        animationType="slide"
-        transparent={true}
-        visible={certificateModalVisible}
-        onRequestClose={toggleCertificateModal}
-      >
-        <View style={styles.modalContainer}>
-          <Image
-            source={require('../assets/certificate.jpg')} // Replace with your certificate image
-            style={styles.certificateImageModal}
-          />
-          <TouchableOpacity style={styles.closeButton} onPress={toggleCertificateModal}>
-            <Text style={styles.closeButtonText}>Close</Text>
-          </TouchableOpacity>
-        </View>
-      </Modal>
-
+              animationType="slide"
+              transparent={true}
+              visible={certificateModalVisible}
+              onRequestClose={toggleCertificateModal}
+            >
+              <View style={styles.modalContainer}>
+                <Image
+                  source={require("../assets/certificate.jpg")} // Replace with your certificate image
+                  style={styles.certificateImageModal}
+                />
+                <TouchableOpacity
+                  style={styles.closeButton}
+                  onPress={toggleCertificateModal}
+                >
+                  <Text style={styles.closeButtonText}>Close</Text>
+                </TouchableOpacity>
+              </View>
+            </Modal>
           </View>
         </View>
         <View style={styles.certificateRow}>
           <Image
-            source={require('../assets/Cert_medal.png')}
+            source={require("../assets/Cert_medal.png")}
             style={styles.certificateImage}
           />
           <View>
-            <Text style={styles.certificateTitle}>English Speaking & Listening</Text>
-            <Text style={styles.certificateDescription}>Grade Achieved 90%</Text>
+            <Text style={styles.certificateTitle}>
+              English Speaking & Listening
+            </Text>
+            <Text style={styles.certificateDescription}>
+              Grade Achieved 90%
+            </Text>
             {/* Add functionality to display the certificate image when clicked */}
-            <Text style={styles.certificateLink } onPress={toggleCertificateModal}>View Certificate</Text>
-            <Modal
-        animationType="slide"
-        transparent={true}
-        visible={certificateModalVisible}
-        onRequestClose={toggleCertificateModal}
-      >
-        <View style={styles.modalContainer}>
-          <Image
-            source={require('../assets/certificate.jpg')} // Replace with your certificate image
-            style={styles.certificateImageModal}
-          />
-          <TouchableOpacity style={styles.closeButton} onPress={toggleCertificateModal}>
-            <Text style={styles.closeButtonText}>Close</Text>
-          </TouchableOpacity>
-        </View>
-      </Modal>
+            <Text
+              style={styles.certificateLink}
+              onPress={toggleCertificateModal}
+            >
+              View Certificate
+            </Text>
           </View>
         </View>
         {/* more certificates lolll */}
@@ -153,43 +173,43 @@ const Achievement = () => {
 
 const styles = StyleSheet.create({
   container: {
-    alignItems: 'center',
     padding: 20,
   },
   header: {
     fontSize: 24,
-    fontWeight: 'bold',
+    fontWeight: "bold",
   },
   levelContainer: {
-    backgroundColor: 'white',
+    backgroundColor: "#DCD8EB",
     borderRadius: 10,
     marginVertical: 10,
     padding: 15,
+    
   },
   levelBox: {
-    alignItems: 'center',
+    alignItems: "left",
   },
   levelText: {
     fontSize: 20,
   },
   levelDescription: {
     fontSize: 14,
-    color: '#9098A3',
+    color: "#9098A3",
   },
   title: {
     fontSize: 20,
-    fontWeight: 'bold',
+    fontWeight: "bold",
     marginTop: 20,
   },
   badgesContainer: {
-    backgroundColor: 'white',
+    backgroundColor: "white",
     borderRadius: 10,
     marginVertical: 10,
     padding: 25,
   },
   badgeRow: {
-    flexDirection: 'row',
-    alignItems: 'center',
+    flexDirection: "row",
+    alignItems: "center",
     marginBottom: 10,
   },
   badgeImage: {
@@ -203,18 +223,20 @@ const styles = StyleSheet.create({
   },
   badgeDescription: {
     fontSize: 12,
-    color: '#9098A3',
+    color: "#9098A3",
   },
   medalsContainer: {
-    flexDirection: 'row',
+    flexDirection: "row",
     marginVertical: 10,
+    paddingVertical: 10, // Added padding for better spacing
   },
   medalColumn: {
-    backgroundColor: 'white',
+    backgroundColor: "white",
     borderRadius: 10,
     marginHorizontal: 5,
-    alignItems: 'center',
+    alignItems: "center",
     padding: 10,
+    width: 140, // Adjusted width for better spacing
   },
   medalImage: {
     width: 70,
@@ -222,20 +244,21 @@ const styles = StyleSheet.create({
   },
   medalTitle: {
     fontSize: 14,
+    alignSelf: "center",
   },
   medalLevel: {
     fontSize: 12,
-    color: '#7AB4A1',
+    color: "#7AB4A1",
   },
   certificatesContainer: {
-    backgroundColor: 'white',
+    backgroundColor: "white",
     borderRadius: 10,
     marginVertical: 10,
     padding: 25,
   },
   certificateRow: {
-    flexDirection: 'row',
-    alignItems: 'center',
+    flexDirection: "row",
+    alignItems: "center",
     marginBottom: 10,
   },
   certificateImage: {
@@ -248,50 +271,50 @@ const styles = StyleSheet.create({
   },
   certificateDescription: {
     fontSize: 12,
-    color: '#9098A3',
+    color: "#9098A3",
   },
   certificateLink: {
-    color: 'blue',
-    textDecorationLine: 'underline',
+    color: "blue",
+    textDecorationLine: "underline",
     fontSize: 12,
   },
   progressBarContainer: {
     height: 10,
-    backgroundColor: '#F1F1F1',
+    backgroundColor: "#F1F1F1",
     borderRadius: 5,
     marginTop: 10,
   },
   progressBar: {
-    height: 10,
-    backgroundColor: '#7AB4A1', 
-    borderRadius: 5,
+    flex: 1, // Fill the container
+    flexDirection: "row",
+    backgroundColor: "gray", // The default color (unfilled)
+    borderRadius: 8,
   },
-  certificateLink: {
-    color: 'blue',
-    textDecorationLine: 'underline',
-    fontSize: 12,
+  progressFill: {
+    flex: 0.6, // Fills the progress bar
+    backgroundColor: "green", // The filled section's color
+    borderRadius: 8,
   },
   modalContainer: {
     flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-    backgroundColor: 'rgba(0, 0, 0, 0.4)',
+    justifyContent: "center",
+    alignItems: "center",
+    backgroundColor: "rgba(0, 0, 0, 0.4)",
   },
   certificateImageModal: {
     width: 330,
     height: 260,
   },
   closeButton: {
-    backgroundColor: 'white',
+    backgroundColor: "white",
     borderRadius: 10,
     padding: 10,
     marginTop: 10,
   },
   closeButtonText: {
     fontSize: 16,
-    color: 'black',
+    color: "black",
   },
 });
 
 export default Achievement;
-//yet finish asset

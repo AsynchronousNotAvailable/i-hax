@@ -196,16 +196,18 @@ const styles = StyleSheet.create({
   rowContainer: {
     flexDirection: "row",
     // flex: 1,
-    height: 150
+    height: 180
     
     
   },
   columnContainer: {
     margin: 10,
+    
+    backgroundColor: "transparent"
   },
   courseImage: {
-    width: 120,
-    height: 140,
+    width: 130,
+    height: 160,
     borderRadius: 10, // Adding border radius to the image
   },
   transparentLayer: {
@@ -214,6 +216,8 @@ const styles = StyleSheet.create({
     left: 0,
     right: 0,
     backgroundColor: "rgba(217, 217, 217, 0.5)",
+    borderBottomLeftRadius: 30,
+    borderBottomRightRadius: 30,
     padding: 5,
   },
   courseText: {

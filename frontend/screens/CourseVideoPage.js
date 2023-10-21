@@ -35,7 +35,7 @@ const CourseVideoPage = () => {
 
   return (
     <View style={{ flex: 1 }}>
-      <View style={{ marginTop: -400, flex: 1 }}>
+      <View style={{ flex: 1 }}>
         <Video
           source={require("/Users/wenghong/i-hax/frontend/assets/video.mp4")}
           rate={1.0}
@@ -54,7 +54,7 @@ const CourseVideoPage = () => {
           bottom: 0,
           left: 0,
                   right: 0,
-          height: 400,
+          height: 200,
            // Adjust the height as needed
           backgroundColor: "white",
           transform: [{ translateY }],

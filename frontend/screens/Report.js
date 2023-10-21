@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { View, Text, TextInput, TouchableOpacity, StyleSheet, Image } from 'react-native';
+import { View, Text, TextInput, TouchableOpacity, StyleSheet, Image, ScrollView } from 'react-native';
 
 const ReportIssue = () => {
   const [issue, setIssue] = useState('');
@@ -12,7 +12,7 @@ const ReportIssue = () => {
   };
 
   return (
-    <View style={styles.container}>
+    <ScrollView style={styles.container}>
       <Text style={styles.title}>What's wrong?</Text>
       <View style={styles.frame}>
         <TextInput
@@ -24,26 +24,30 @@ const ReportIssue = () => {
           multiline
         />
       </View>
-      <Text style={styles.title}> </Text>
-      <Text style={styles.title}>Tell Us More.</Text>
-      <View style={styles.bigFrame}>
+
+      <Text style={styles.title}>Tell Us More</Text>
+      <View style={styles.frame}>
         <TextInput
-          style={[styles.input, styles.bigInput]}
-          value={description}
-          onChangeText={setDescription}
-          placeholder="Write your description here"
+          style={styles.input}
+          value={issue}
+          onChangeText={setIssue}
+          placeholder="Write down the descripton of the issue"
           placeholderTextColor="gray"
           multiline
         />
       </View>
-      <View style={styles.uploadContainer}>
-        <Text style={styles.title}>Upload Photo</Text>
-        <Image source={require('../assets/plus_icon.jpg')} style={styles.plusIcon} />
+
+
+      <Text style={styles.title}>Upload Photo</Text>
+      <View style={styles.frame}>
+        <Image source={require('../assets/image.png')} style={styles.plusIcon} />
+        <Text style={{color: "gray", alignSelf: "center"}}>Upload Photo Here</Text>
       </View>
-      <TouchableOpacity style={styles.submitButton} onPress={handleSubmit}>
-        <Text style={styles.submitButtonText}>Submit Issue</Text>
-      </TouchableOpacity>
-    </View>
+
+
+
+      
+    </ScrollView>
   );
 };
 
@@ -56,36 +60,40 @@ const styles = StyleSheet.create({
   title: {
     fontSize: 24,
     fontWeight: 'bold',
+    marginBottom: 10,
   },
   frame: {
     backgroundColor: '#F6F4FF',
     borderRadius: 20,
-    padding: 10,
-    marginTop: 10,
+    padding: 20,
+    marginBottom: 40,
+    height: 100,
+    
+    
   },
   input: {
     backgroundColor: 'transparent',
     color: 'black',
+    marginBottom: 5
   },
   bigFrame: {
-    backgroundColor: '#F6F4FF',
-    borderRadius: 20,
-    padding: 10,
-    marginTop: 10,
+    marginTop: 20,
   },
   bigInput: {
-    height: 150,
-    bottom: 60,
+    height: 100,
+    textAlignVertical: 'top', // Make text input expand from the top
   },
   uploadContainer: {
     flexDirection: 'row',
     alignItems: 'center',
     marginTop: 20,
+    
   },
   plusIcon: {
-    width: 20,
-    height: 20,
-    marginLeft: 10,
+    width: 40,
+    height: 40,
+    alignSelf: 'center',
+    marginBottom: 10,
   },
   submitButton: {
     backgroundColor: '#C3AED6',
@@ -93,8 +101,6 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     padding: 15,
     marginTop: 20,
-    marginLeft: 80,
-    marginRight: 80,
   },
   submitButtonText: {
     fontSize: 18,

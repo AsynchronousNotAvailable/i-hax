@@ -22,59 +22,64 @@ const Profile = ({ navigation, route }) => {
       </View>
 
       <View style={styles.whiteBackground}>
-        <View style={styles.buttonRows}>
-          <View style={styles.buttonRow}>
-            <TouchableOpacity style={styles.button} onPress={() => navigation.navigate('Language')}>
-              <Text>Language Preferences</Text>
-            </TouchableOpacity>
+        <View style={{ justifyContent: "center", width: "90%", left:20 }}>
+          <View style={styles.buttonRows}>
+          <Text style={styles.title}>General</Text>
+            <View style={styles.buttonRow}>
+              <TouchableOpacity style={styles.button} onPress={() => navigation.navigate('Language')}>
+                <Text style={{alignSelf: 'center', fontSize: 18, letterSpacing: 2}}>Language Preferences</Text>
+              </TouchableOpacity>
+            </View>
+
+            <View style={styles.buttonRow}>
+              <TouchableOpacity style={styles.button} onPress={() => navigation.navigate('Achievement')}>
+                <Text style={{alignSelf: 'center', fontSize: 18, letterSpacing: 2}}>Achievements</Text>
+              </TouchableOpacity>
+            </View>
+
+            <View style={styles.buttonRow}>
+              <TouchableOpacity style={styles.button} onPress={() => navigation.navigate('Shop')}>
+                <Text style={{alignSelf: 'center', fontSize: 18, letterSpacing: 2}}>Shop</Text>
+              </TouchableOpacity>
+            </View>
           </View>
 
+          <View style={styles.buttonRows}>
+          <Text style={styles.title}>Settings and Preferences</Text>
           <View style={styles.buttonRow}>
-            <TouchableOpacity style={styles.button} onPress={() => navigation.navigate('Achievement')}>
-              <Text>Achievements</Text>
-            </TouchableOpacity>
+          <TouchableOpacity style={styles.button}>
+            <Text style={{alignSelf: 'center', fontSize: 18, letterSpacing: 2}}>Notifications</Text>
+          </TouchableOpacity>
+          </View>
+          <View style={styles.buttonRow}>
+          <TouchableOpacity style={styles.button}>
+            <Text style={{alignSelf: 'center', fontSize: 18, letterSpacing: 2}}>Security</Text>
+          </TouchableOpacity>
+          </View>
           </View>
 
+          <View style={styles.buttonRows}>
+          <Text style={styles.title}>Support</Text>
           <View style={styles.buttonRow}>
-            <TouchableOpacity style={styles.button} onPress={() => navigation.navigate('Shop')}>
-              <Text>Shop</Text>
-            </TouchableOpacity>
+          <TouchableOpacity style={styles.button} onPress={() => navigation.navigate('Help Centre')}>
+            <Text style={{alignSelf: 'center', fontSize: 18, letterSpacing: 2}}>Help Centre</Text>
+          </TouchableOpacity>
           </View>
+          <View style={styles.buttonRow}>
+          <TouchableOpacity style={styles.button} onPress={() => navigation.navigate('Report A Bug')}>
+            <Text style={{alignSelf: 'center', fontSize: 18, letterSpacing: 2}}>Report a Bug</Text>
+          </TouchableOpacity>
+          </View>
+          </View>
+
+          <View style={styles.buttonRows}>
+          <TouchableOpacity style={styles.logoutButton}  onPress={() => setAuthenticated(false)} >
+            <Text style={styles.logoutButtonText}>Log Out</Text>
+          </TouchableOpacity>
         </View>
 
-        <View style={styles.buttonRows}>
-        <Text style={styles.title}>Settings and Preferences</Text>
-        <View style={styles.buttonRow}>
-        <TouchableOpacity style={styles.button}>
-          <Text style={{fontSize: 20}}>Notifications</Text>
-        </TouchableOpacity>
         </View>
-        <View style={styles.buttonRow}>
-        <TouchableOpacity style={styles.button}>
-          <Text>Security</Text>
-        </TouchableOpacity>
-        </View>
-        </View>
-
-        <View style={styles.buttonRows}>
-        <Text style={styles.title}>Support</Text>
-        <View style={styles.buttonRow}>
-        <TouchableOpacity style={styles.button} onPress={() => navigation.navigate('Help Centre')}>
-          <Text>Help Centre</Text>
-        </TouchableOpacity>
-        </View>
-        <View style={styles.buttonRow}>
-        <TouchableOpacity style={styles.button} onPress={() => navigation.navigate('Report A Bug')}>
-          <Text>Report a Bug</Text>
-        </TouchableOpacity>
-        </View>
-        </View>
-
-        <View style={styles.buttonRows}>
-        <TouchableOpacity style={styles.logoutButton}  onPress={() => setAuthenticated(false)} >
-          <Text style={styles.logoutButtonText}>Log Out</Text>
-        </TouchableOpacity>
-      </View>
+       
       </View>
     </ScrollView>
   );
@@ -97,14 +102,14 @@ const styles = StyleSheet.create({
   profileName: {
     marginTop: 10,
     fontSize: 20,
+    fontWeight: "bold"
   },
   whiteBackground: {
     flex: 1,
     backgroundColor: 'white',
-    borderTopLeftRadius: 20,
-    borderTopRightRadius: 20,
     marginTop: 10,
-    paddingVertical: 24
+    paddingVertical: 24,
+    
   },
   buttonRows: {
     margin: 20,
@@ -116,8 +121,8 @@ const styles = StyleSheet.create({
   },
   button: {
     flex: 1,
-    backgroundColor: '#C6B8FF',
-    opacity: 0.15,
+    backgroundColor: '#E5E1F8',
+    
     borderRadius: 10,
     padding: 20,
     margin: 5,
@@ -125,6 +130,8 @@ const styles = StyleSheet.create({
   },
   title: {
     fontSize: 18,
+    marginBottom: 10,
+    
   },
   logoutButton: {
     backgroundColor: 'red',

@@ -74,12 +74,13 @@ const styles = StyleSheet.create({
   title: {
     fontSize: 20,
     marginBottom: 20,
+    width: "80%"
   },
   languageFrame: {
     backgroundColor: '#E0E5EB',
     borderRadius: 10,
     width: '80%',
-    maxHeight: 200,
+    maxHeight: 250,
   },
   languageList: {
     padding: 10,

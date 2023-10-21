@@ -7,7 +7,7 @@ import FeatherIcon from 'react-native-vector-icons/Feather';
 import PrimaryGradePage from './primary_grade_page';
 import HomePage from './HomePage';
 
-const LearnAnalyticPage = ({ navigation }) => {
+const CalendarPage = ({ navigation }) => {
   const navigateToNextPage = () => {
     navigation.navigate('FirstTabMain'); // Navigate to the next page
   };
@@ -15,71 +15,30 @@ const LearnAnalyticPage = ({ navigation }) => {
   return (
     <SafeAreaView style={styles.container}>
         <ScrollView>
-            {/* <View style={{flexDirection: "row", marginBottom: 40,}}>
+            <View style={{flexDirection: "row", marginBottom: 40,}}>
                 <TouchableOpacity
                 onPress={(navigation) => navigateToNextPage(navigation)}
                 style={styles.backBtn}>
                 <FeatherIcon color="#000000" name="arrow-left" size={28} />
             </TouchableOpacity>
-            <Text style={styles.Headertext}>
-            Daily Missions
-            </Text>
-        </View> */}
+            <Image
+                source={require('../frontend/assets/dateCal.png')}
+                style={styles.dateCal}
+            />
+        </View>
       
       {/* <Text style={styles.Headertext}>
         Daily Missions
       </Text> */}
 
-        <View style={{left: 22, bottom: 30}}>
-            <View>
-                <Image 
-              source={require('../frontend/assets/tabs.png')}
-              style={{ width: "90%" , height: 320, marginTop: 35}}
-              
-            />
-            
-            <View style={{ flexDirection: "column", alignItems: "center"}}>
-              
-            </View>
-            <View>
-                <Text style={styles.topics}>
-                    Strongest Topics
-                </Text>
-                <Image 
-              source={require('../frontend/assets/strongTopic.png')}
-              // style={{ width: "95%" }}
-                />
-            </View>
-            <View>
-                <Text style={styles.topics}>
-                    Weakest Topics
-                </Text>
-                <Image 
-              source={require('../frontend/assets/weakTopic.png')}
-              // style={{ width: "90%" }}
-                />
-            </View>
-            <View>
-            <Text style={styles.overview}>
-                   Progress Score
-                </Text>
-                <Image
-              source={require('../frontend/assets/progressScore.png')}
-              style={{left: 10,}}
-                />
-            </View>
-            <View>
-                <Text style={styles.overview}>
-                    Student Performance Overview
-                </Text>
-                <Image
-              source={require('../frontend/assets/performanceOverview.png')}
-              style={{ width: "90%" }}
-                />
-            </View>
-          </View>
-
-            
+        <View style={{bottom: 20}}>
+           <Image
+            source={require('../frontend/assets/date.png')}
+           />
+        </View>
+        <View style={{bottom: 10}}>
+            <Image
+            source={require('../frontend/assets/calHalf.png')}/>
         </View>
       </ScrollView>
     </SafeAreaView>
@@ -114,16 +73,16 @@ const styles = StyleSheet.create({
       textAlign: 'center',
     },
     Headertext: {
-      // fontSize: 30,
+      fontSize: 30,
       lineHeight: 30,
-      fontWeight: '400',
+      fontWeight: '600',
       color: '#000000',
       textAlign: 'center',
-      fontSize: 20,
-      top: 15,
+      fontSize: 27,
+      top: 16,
       bottom: 100,
       margin: 10,
-      left: 25,
+      left: 65,
     },
     button: {
       paddingVertical: 12,
@@ -148,7 +107,7 @@ const styles = StyleSheet.create({
       alignItems: 'center',
       justifyContent: 'center',
       marginBottom: 16,
-      left: 20,
+      left: 15,
       top: 20,
     },
     treasure: {
@@ -170,7 +129,11 @@ const styles = StyleSheet.create({
         left: 5,
         color: '#9098A3',
         fontWeight: '600',
+    },
+    dateCal: {
+        left: 25,
+        top: 27,
     }
   });
 
-export default LearnAnalyticPage;
+export default CalendarPage;
