@@ -15,6 +15,8 @@ export class UsersService {
     return await this.userModel.findOne({ email });
   }
 
+
+  
   async createUser(createUserDto: CreateUserDto) {
     if (this.isEmailExist(createUserDto.email)) {
       return { success: false, message: 'Email Existed' };
